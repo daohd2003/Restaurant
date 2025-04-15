@@ -14,7 +14,6 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './assets/css/main.css';
 import './assets/vendor/bootstrap/css/bootstrap.min.css';
-import './assets/vendor/bootstrap-icons/bootstrap-icons.css';
 import './assets/vendor/isotope-layout/isotope.pkgd.min.js';
 import './assets/vendor/imagesloaded/imagesloaded.pkgd.min.js';
 import './assets/vendor/php-email-form/validate.js';
