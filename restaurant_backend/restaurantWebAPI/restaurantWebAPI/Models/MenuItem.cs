@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace restaurantWebAPI.Models
 {
@@ -32,7 +33,8 @@ namespace restaurantWebAPI.Models
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
 
-        // Navigation property
-        public virtual Category Category { get; set; }
+        [NotMapped]
+        [JsonIgnore]
+        public virtual Category? Category { get; set; }
     }
 }

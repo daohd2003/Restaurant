@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using restaurantWebAPI.Hubs;
 using restaurantWebAPI.Models;
 using restaurantWebAPI.Services;
 
@@ -9,10 +11,14 @@ namespace restaurantWebAPI.Controllers
     public class MenuController : ControllerBase
     {
         private readonly IMenuService _menuService;
+        private readonly ICategoryService _categoryService;
+        private readonly IHubContext<MenuCategoryHub> _hubContext;
 
-        public MenuController(IMenuService menuService)
+        public MenuController(IMenuService menuService, IHubContext<MenuCategoryHub> hubContext, ICategoryService categoryService)
         {
             _menuService = menuService;
+            _hubContext = hubContext;
+            _categoryService = categoryService;
         }
 
         // GET: api/<ValuesController>
@@ -23,7 +29,7 @@ namespace restaurantWebAPI.Controllers
             return Ok(menuItems);
         }
 
-/*        [HttpGet("with-categories")]
+/*        [Htt  pGet("with-categories")]
         public async Task<ActionResult<IEnumerable<MenuItem>>> GetMenuItemsWithCategories(String slug)
         {
             var menuItems = await _menuService.GetMenuItemsByCategoryAsync(slug);
@@ -39,8 +45,22 @@ namespace restaurantWebAPI.Controllers
 
         // POST api/<ValuesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> AddMenu(MenuItem menu)
         {
+            if(menu == null)
+            {
+                return BadRequest("Menu item cannot be null");
+            }
+
+            var createdMenu = await _menuService.CreateMenuItemAsync(menu);
+
+            // Lấy lại toàn bộ danh sách category với menu items mới nhất
+            var updatedCategories = await _categoryService.GetAllWithMenuItemsAsync();
+
+            // Gọi Hub để broadcast
+            await _hubContext.Clients.All.SendAsync("ReceiveMenuUpdate", updatedCategories);
+
+            return CreatedAtAction(nameof(Get), new { id = createdMenu.Id }, createdMenu);
         }
 
         // PUT api/<ValuesController>/5

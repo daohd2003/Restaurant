@@ -5,6 +5,8 @@ D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bi
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\restaurantWebAPI.runtimeconfig.json
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\restaurantWebAPI.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\restaurantWebAPI.pdb
+D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\AutoMapper.dll
+D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Azure.Core.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Azure.Identity.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Humanizer.dll
@@ -31,11 +33,14 @@ D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bi
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Physical.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Microsoft.Identity.Client.dll
@@ -50,6 +55,7 @@ D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bi
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Mono.TextTemplating.dll
+D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Newtonsoft.Json.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -67,6 +73,7 @@ D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bi
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\System.IO.Pipelines.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\System.Memory.Data.dll
+D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\System.Runtime.Caching.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\System.Security.Permissions.dll
@@ -173,5 +180,3 @@ D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\ob
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\obj\Debug\net8.0\restaurantWebAPI.pdb
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\obj\Debug\net8.0\restaurantWebAPI.genruntimeconfig.cache
 D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\obj\Debug\net8.0\ref\restaurantWebAPI.dll
-D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\AutoMapper.dll
-D:\Restaurant\Restaurant\restaurant_backend\restaurantWebAPI\restaurantWebAPI\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using restaurantWebAPI.Hubs;
 using restaurantWebAPI.Models;
 using restaurantWebAPI.Services;
 
@@ -11,10 +13,12 @@ namespace restaurantWebAPI.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryService _categoryService;
+        private readonly IHubContext<MenuCategoryHub> _hubContext;
 
-        public CategoryController(ICategoryService categoryService)
+        public CategoryController(ICategoryService categoryService, IHubContext<MenuCategoryHub> hubContext)
         {
             _categoryService = categoryService;
+            _hubContext = hubContext;
         }
 
         // GET: api/<CategoryController>

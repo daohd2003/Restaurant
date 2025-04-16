@@ -1,6 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using restaurantWebAPI.Data;
+using restaurantWebAPI.Hubs;
 using restaurantWebAPI.Mapper;
 using restaurantWebAPI.Services;
 
@@ -27,14 +28,17 @@ namespace restaurantWebAPI
                 {
                     policy.WithOrigins("http://localhost:3000")
                           .AllowAnyHeader()
-                          .AllowAnyMethod();
+                          .AllowAnyMethod()
+                          .AllowCredentials();
                 });
             });
 
-            builder.Services.AddTransient<ICategoryService, CategoryService>();
-            builder.Services.AddTransient<IMenuService, MenuService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped<IMenuService, MenuService>();
 
             builder.Services.AddAutoMapper(typeof(MappingProfile));
+            builder.Services.AddSignalR();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -57,6 +61,7 @@ namespace restaurantWebAPI
 
             app.UseAuthorization();
 
+            app.MapHub<MenuCategoryHub>("/menuCategoryHub");
 
             app.MapControllers();
 
