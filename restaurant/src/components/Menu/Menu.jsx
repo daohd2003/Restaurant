@@ -7,11 +7,13 @@ import {
   setupMenuHubListeners,
   removeMenuHubListeners,
 } from '../../services/signalR'
+import { useTranslation } from 'react-i18next'
 
 const Menu = () => {
   const isotope = useRef()
   const filterKey = useRef('*')
   const [categories, setCategories] = useState([])
+  const { t } = useTranslation()
 
   // Fetch API
   useEffect(() => {
@@ -82,8 +84,8 @@ const Menu = () => {
   return (
     <section id="menu" className="menu section">
       <div className="container section-title" data-aos="fade-up">
-        <h2>Menu</h2>
-        <p>Check Our Tasty Menu</p>
+        <h2>{t('menu.title')}</h2>
+        <p>{t('menu.subtitle')}</p>
       </div>
 
       <div className="container">
@@ -96,7 +98,7 @@ const Menu = () => {
                 data-filter="*"
                 className="filter-active"
               >
-                All
+                {t('menu.filters.all')}
               </li>
               {categories.map((category) => (
                 <li
@@ -104,7 +106,7 @@ const Menu = () => {
                   onClick={() => handleFilterClick(`.filter-${category.slug}`)}
                   data-filter={`.filter-${category.slug}`}
                 >
-                  {category.name}
+                  {t(`menu.filters.${category.name}`, category.name)}
                 </li>
               ))}
             </ul>

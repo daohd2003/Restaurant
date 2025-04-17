@@ -1,90 +1,122 @@
-import React, { useEffect, useState } from 'react';
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 const Header = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('hero');
-  const [mobileNavActive, setMobileNavActive] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
+  const { t, i18n } = useTranslation()
+  const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('hero')
+  const [mobileNavActive, setMobileNavActive] = useState(false)
+  const [activeDropdown, setActiveDropdown] = useState(null)
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng)
+  }
 
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
-        setScrolled(true);
+        setScrolled(true)
       } else {
-        setScrolled(false);
+        setScrolled(false)
       }
 
       // Active section detection
-      const scrollPosition = window.scrollY + 150;
-      document.querySelectorAll('section[id]').forEach((section) => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
+      const scrollPosition = window.scrollY + 200 // Tăng offset để chắc chắn bắt được section hero
+      const sections = document.querySelectorAll('section[id]')
 
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          setActiveSection(section.id);
+      // Nếu scroll lên đầu trang, active hero
+      if (window.scrollY === 0) {
+        setActiveSection('hero')
+        return
+      }
+
+      let currentSection = 'hero' // Mặc định là hero
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop
+        const sectionHeight = section.offsetHeight
+
+        if (
+          scrollPosition >= sectionTop &&
+          scrollPosition < sectionTop + sectionHeight
+        ) {
+          currentSection = section.id
         }
-      });
-    };
+      })
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+      setActiveSection(currentSection)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (mobileNavActive && 
-          !e.target.closest('.navmenu') && 
-          !e.target.closest('.mobile-nav-toggle')) {
-        setMobileNavActive(false);
+      if (
+        mobileNavActive &&
+        !e.target.closest('.navmenu') &&
+        !e.target.closest('.mobile-nav-toggle')
+      ) {
+        setMobileNavActive(false)
       }
-    };
+    }
 
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, [mobileNavActive]);
+    document.addEventListener('click', handleClickOutside)
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [mobileNavActive])
 
   const handleMenuClick = (e, sectionId) => {
-    e.preventDefault();
-    const section = document.getElementById(sectionId);
+    e.preventDefault()
+    const section = document.getElementById(sectionId)
     if (section) {
       window.scrollTo({
         top: section.offsetTop - 100,
         behavior: 'smooth',
-      });
-      setActiveSection(sectionId);
-      setMobileNavActive(false);
+      })
+      setActiveSection(sectionId)
+      setMobileNavActive(false)
     }
-  };
+  }
 
   const toggleDropdown = (dropdownId) => {
-    setActiveDropdown(activeDropdown === dropdownId ? null : dropdownId);
-  };
+    setActiveDropdown(activeDropdown === dropdownId ? null : dropdownId)
+  }
 
   return (
-    <header id="header" className={`header fixed-top ${scrolled ? 'header-scrolled' : ''}`}>
+    <header
+      id="header"
+      className={`header fixed-top ${scrolled ? 'header-scrolled' : ''}`}
+    >
       {/* Top Bar */}
       <div className="topbar d-flex align-items-center">
         <div className="container d-flex justify-content-center justify-content-md-between">
           <div className="contact-info d-flex align-items-center">
             <i className="bi bi-envelope d-flex align-items-center">
-              <a href="mailto:contact@example.com" className="no-underline">
-                contact@example.com
+              <a href={`mailto:${t('header.email')}`} className="no-underline">
+                {t('header.email')}
               </a>
             </i>
             <i className="bi bi-phone d-flex align-items-center ms-4">
-              <span>+1 5589 55488 55</span>
+              <span>{t('header.phone')}</span>
             </i>
           </div>
           <div className="languages d-none d-md-flex align-items-center">
             <ul>
-              <li>En</li>
-              <li>
-                <a href="#" className="no-underline">
-                  De
-                </a>
+              <li
+                onClick={() => changeLanguage('en')}
+                className={i18n.language === 'en' ? 'active' : ''}
+              >
+                {t('header.languages.en')}
+              </li>
+              <li
+                onClick={() => changeLanguage('vi')}
+                className={i18n.language === 'vi' ? 'active' : ''}
+              >
+                {t('header.languages.vi')}
               </li>
             </ul>
           </div>
@@ -100,79 +132,58 @@ const Header = () => {
             className="logo d-flex align-items-center me-auto me-xl-0 no-underline"
             onClick={(e) => handleMenuClick(e, 'hero')}
           >
-            <h1 className="sitename">Restaurantly</h1>
+            <h1 className="sitename">{t('header.logo')}</h1>
           </a>
 
           {/* Nav Menu */}
-          <nav id="navmenu" className={`navmenu ${mobileNavActive ? 'active' : ''}`}>
+          <nav
+            id="navmenu"
+            className={`navmenu ${mobileNavActive ? 'active' : ''}`}
+          >
             <ul>
-              {[
-                { id: 'hero', name: 'Home' },
-                { id: 'about', name: 'About' },
-                { id: 'menu', name: 'Menu' },
-                { id: 'specials', name: 'Specials' },
-                { id: 'events', name: 'Events' },
-                { id: 'chefs', name: 'Chefs' },
-                { id: 'gallery', name: 'Gallery' },
-                { id: 'contact', name: 'Contact' },
-              ].map((item) => (
-                <li key={item.id}>
+              {Object.entries(
+                t('header.nav_items', { returnObjects: true })
+              ).map(([key, value]) => (
+                <li key={key}>
                   <a
-                    href={`#${item.id}`}
-                    className={`no-underline ${activeSection === item.id ? 'active' : ''}`}
-                    onClick={(e) => handleMenuClick(e, item.id)}
+                    href={`#${key}`}
+                    className={`no-underline ${
+                      activeSection === key ? 'active' : ''
+                    }`}
+                    onClick={(e) => handleMenuClick(e, key)}
                   >
-                    {item.name}
+                    {value}
                   </a>
                 </li>
               ))}
 
               {/* Dropdown Menu */}
-              <li className={`dropdown ${activeDropdown === 'main' ? 'active' : ''}`}>
-                <a 
-                  href="#" 
+              <li
+                className={`dropdown ${
+                  activeDropdown === 'main' ? 'active' : ''
+                }`}
+              >
+                <a
+                  href="#"
                   className="no-underline"
                   onClick={(e) => {
-                    e.preventDefault();
-                    toggleDropdown('main');
+                    e.preventDefault()
+                    toggleDropdown('main')
                   }}
                 >
-                  <span>Dropdown</span>
+                  <span>{t('header.dropdown.title')}</span>
                   <i className="bi bi-chevron-down toggle-dropdown" />
                 </a>
                 <ul>
-                  <li>
-                    <a href="#" className="no-underline">Dropdown 1</a>
-                  </li>
-                  {/* <li className={`dropdown ${activeDropdown === 'deep' ? 'active' : ''}`}>
-                    <a 
-                      href="#" 
-                      className="no-underline"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        toggleDropdown('deep');
-                      }}
-                    >
-                      <span>Deep Dropdown</span>
-                      <i className="bi bi-chevron-down toggle-dropdown" />
-                    </a>
-                    <ul>
-                      {[1, 2, 3, 4, 5].map((i) => (
-                        <li key={`deep-${i}`}>
-                          <a href="#" className="no-underline">Deep Dropdown {i}</a>
-                        </li>
-                      ))}
-                    </ul>
-                  </li> */}
-                  <li>
-                    <a href="#" className="no-underline">Dropdown 2</a>
-                  </li>
-                  <li>
-                    <a href="#" className="no-underline">Dropdown 3</a>
-                  </li>
-                  <li>
-                    <a href="#" className="no-underline">Dropdown 4</a>
-                  </li>
+                  {t('header.dropdown.items', { returnObjects: true }).map(
+                    (item, index) => (
+                      <li key={`dropdown-${index}`}>
+                        <a href="#" className="no-underline">
+                          {item}
+                        </a>
+                      </li>
+                    )
+                  )}
                 </ul>
               </li>
             </ul>
@@ -193,12 +204,12 @@ const Header = () => {
             href="#book-a-table"
             onClick={(e) => handleMenuClick(e, 'book-a-table')}
           >
-            Book a Table
+            {t('header.book_table')}
           </a>
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

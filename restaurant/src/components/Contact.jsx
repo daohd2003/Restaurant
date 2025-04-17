@@ -1,12 +1,16 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 const Contact = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="contact" className="contact section">
-      {/* Section Title */}
       <div className="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>Contact Us</p>
+        <h2>{t('contact.title')}</h2>
+        <p>{t('contact.subtitle')}</p>
       </div>
-      {/* End Section Title */}
+
       <div className="mb-5" data-aos="fade-up" data-aos-delay={200}>
         <iframe
           style={{ border: 0, width: '100%', height: 400 }}
@@ -18,62 +22,40 @@ const Contact = () => {
         />
       </div>
       {/* End Google Maps */}
+
       <div className="container" data-aos="fade-up" data-aos-delay={100}>
         <div className="row gy-4">
           <div className="col-lg-4">
-            <div
-              className="info-item d-flex"
-              data-aos="fade-up"
-              data-aos-delay={300}
-            >
+            <div className="info-item d-flex" data-aos="fade-up" data-aos-delay={300}>
               <i className="bi bi-geo-alt flex-shrink-0" />
               <div>
-                <h3>Location</h3>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <h3>{t('contact.locationTitle')}</h3>
+                <p>{t('contact.locationDetail')}</p>
               </div>
             </div>
-            {/* End Info Item */}
-            <div
-              className="info-item d-flex"
-              data-aos="fade-up"
-              data-aos-delay={400}
-            >
+            <div className="info-item d-flex" data-aos="fade-up" data-aos-delay={400}>
               <i className="bi bi-telephone flex-shrink-0" />
               <div>
-                <h3>Open Hours</h3>
-                <p>
-                  Monday-Saturday:
-                  <br />
-                  11:00 AM - 2300 PM
-                </p>
+                <h3>{t('contact.openHoursTitle')}</h3>
+                <p>{t('contact.openHoursDetail')}</p>
               </div>
             </div>
-            {/* End Info Item */}
-            <div
-              className="info-item d-flex"
-              data-aos="fade-up"
-              data-aos-delay={400}
-            >
+            <div className="info-item d-flex" data-aos="fade-up" data-aos-delay={400}>
               <i className="bi bi-telephone flex-shrink-0" />
               <div>
-                <h3>Call Us</h3>
-                <p>+1 5589 55488 55</p>
+                <h3>{t('contact.callTitle')}</h3>
+                <p>{t('contact.callDetail')}</p>
               </div>
             </div>
-            {/* End Info Item */}
-            <div
-              className="info-item d-flex"
-              data-aos="fade-up"
-              data-aos-delay={500}
-            >
+            <div className="info-item d-flex" data-aos="fade-up" data-aos-delay={500}>
               <i className="bi bi-envelope flex-shrink-0" />
               <div>
-                <h3>Email Us</h3>
-                <p>info@example.com</p>
+                <h3>{t('contact.emailTitle')}</h3>
+                <p>{t('contact.emailDetail')}</p>
               </div>
             </div>
-            {/* End Info Item */}
           </div>
+
           <div className="col-lg-8">
             <form
               action="forms/contact.php"
@@ -88,54 +70,50 @@ const Contact = () => {
                     type="text"
                     name="name"
                     className="form-control"
-                    placeholder="Your Name"
+                    placeholder={t('contact.form.name')}
                     required=""
                   />
                 </div>
-                <div className="col-md-6 ">
+                <div className="col-md-6">
                   <input
                     type="email"
-                    className="form-control"
                     name="email"
-                    placeholder="Your Email"
+                    className="form-control"
+                    placeholder={t('contact.form.email')}
                     required=""
                   />
                 </div>
                 <div className="col-md-12">
                   <input
                     type="text"
-                    className="form-control"
                     name="subject"
-                    placeholder="Subject"
+                    className="form-control"
+                    placeholder={t('contact.form.subject')}
                     required=""
                   />
                 </div>
                 <div className="col-md-12">
                   <textarea
-                    className="form-control"
                     name="message"
                     rows={6}
-                    placeholder="Message"
+                    className="form-control"
+                    placeholder={t('contact.form.message')}
                     required=""
-                    defaultValue={''}
                   />
                 </div>
                 <div className="col-md-12 text-center">
-                  <div className="loading">Loading</div>
+                  <div className="loading">{t('contact.form.loading')}</div>
                   <div className="error-message" />
-                  <div className="sent-message">
-                    Your message has been sent. Thank you!
-                  </div>
-                  <button type="submit">Send Message</button>
+                  <div className="sent-message">{t('contact.form.success')}</div>
+                  <button type="submit">{t('contact.form.send')}</button>
                 </div>
               </div>
             </form>
           </div>
-          {/* End Contact Form */}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

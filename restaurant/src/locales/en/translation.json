@@ -1,0 +1,288 @@
+{
+  "header": {
+    "email": "contact@example.com",
+    "phone": "+1 5589 55488 55",
+    "languages": {
+      "en": "En",
+      "vi": "Vi"
+    },
+    "logo": "Restaurantly",
+    "nav_items": {
+      "hero": "Home",
+      "about": "About",
+      "menu": "Menu",
+      "specials": "Specials",
+      "events": "Events",
+      "chefs": "Chefs",
+      "gallery": "Gallery",
+      "contact": "Contact"
+    },
+    "dropdown": {
+      "title": "Dropdown",
+      "items": [
+        "Dropdown 1",
+        "Dropdown 2",
+        "Dropdown 3",
+        "Dropdown 4"
+      ]
+    },
+    "book_table": "Book a Table"
+  },
+  "hero": {
+    "title_part1": "Welcome to",
+    "title_part2": "Restaurantly",
+    "description": "Delivering great food for more than 18 years!",
+    "our_menu": "Our Menu",
+    "book_table": "Book a Table"
+  },
+  "about": {
+    "title": "Our Culinary Story",
+    "subtitle": "Founded with passion and dedication, our restaurant brings authentic flavors and exceptional dining experiences to every guest.",
+    "features": [
+      "Fresh, locally-sourced ingredients in every dish.",
+      "Expert chefs with decades of combined experience.",
+      "Seasonal menus featuring innovative cuisine."
+    ],
+    "description": "We take pride in creating memorable dining experiences through our carefully crafted dishes, warm hospitality, and inviting atmosphere. Every meal tells a story of tradition, innovation, and culinary excellence."
+  },
+  "why_us": {
+    "title": "WHY US",
+    "subtitle": "Why Choose Our Restaurant",
+    "cards": [
+      {
+        "title": "Premium Ingredients",
+        "description": "We use only the highest quality ingredients in all our dishes. Every meal is prepared with care and attention to detail."
+      },
+      {
+        "title": "Exceptional Service",
+        "description": "Our staff is dedicated to providing you with an unforgettable dining experience. Your satisfaction is our top priority."
+      },
+      {
+        "title": "Unique Atmosphere",
+        "description": "Enjoy our carefully designed ambiance that combines modern elegance with cozy comfort for the perfect dining environment."
+      }
+    ]
+  },
+  "menu": {
+    "title": "Menu",
+    "subtitle": "Check Our Tasty Menu",
+    "filters": {
+      "all": "All",
+      "Starters": "Starters",
+      "Main Courses": "Main Courses",
+      "Salads": "Salads",
+      "Desserts": "Desserts",
+      "Drinks": "Drinks"
+    }
+  },
+  "specials": {
+    "title": "Specials",
+    "subtitle": "Check Our Chef's Recommendations",
+    "tabs": {
+      "1": {
+        "title": "Chef's Signature Dish",
+        "name": "Signature Truffle Risotto",
+        "shortDesc": "Our award-winning dish featuring imported Italian truffles and Arborio rice",
+        "desc": "Prepared with the finest seasonal truffles, this creamy risotto is cooked to perfection with parmesan cheese and white wine. Each bite delivers an explosion of earthy flavors..."
+      },
+      "2": {
+        "title": "Seasonal Special",
+        "name": "Autumn Harvest Platter",
+        "shortDesc": "A celebration of seasonal produce from local farms",
+        "desc": "Our chefs create this special only when ingredients are at their peak. Featuring roasted butternut squash, caramelized Brussels sprouts, wild mushrooms..."
+      },
+      "3": {
+        "title": "Wine Pairing Menu",
+        "name": "Sommelier's Selection",
+        "shortDesc": "Perfect wine pairings for our most popular dishes",
+        "desc": "Our expert sommelier has curated this special tasting menu with wine pairings from boutique vineyards..."
+      },
+      "4": {
+        "title": "Weekend Brunch",
+        "name": "Sunday Brunch Feast",
+        "shortDesc": "The perfect way to end your weekend",
+        "desc": "Join us every Sunday for our famous brunch buffet featuring made-to-order omelets, Belgian waffles, smoked salmon..."
+      },
+      "5": {
+        "title": "Vegan Delight",
+        "name": "Plant-Based Tasting Menu",
+        "shortDesc": "A culinary journey through innovative vegan cuisine",
+        "desc": "Our chefs have crafted this seven-course plant-based menu to showcase how creative vegan cooking can be..."
+      }
+    }
+  },
+  "events": {
+    "title": "Events",
+    "subtitle": "Check Our Special Events",
+    "items": {
+      "1": {
+        "title": "Birthday Celebrations",
+        "price": "$189",
+        "shortDesc": "Make your special day unforgettable with our personalized birthday packages.",
+        "features": [
+          "Private dining area with festive decorations",
+          "Custom birthday cake from our pastry chef",
+          "Complimentary champagne toast for the guest of honor"
+        ],
+        "description": "Our birthday packages include a three-course meal with options for all ages, dedicated waitstaff, and a personalized birthday announcement. Perfect for groups of 10-25 people, with customizable menus to suit your preferences."
+      },
+      "2": {
+        "title": "Private Dining Experiences",
+        "price": "$290",
+        "shortDesc": "Exclusive events for corporate gatherings, anniversaries, or intimate celebrations.",
+        "features": [
+          "Entire restaurant or private room reservations",
+          "Customized multi-course tasting menus",
+          "Dedicated event coordinator and serving staff"
+        ],
+        "description": "Our private dining options accommodate groups from 15-100 guests with flexible layouts and AV capabilities. Enjoy chef's table experiences, wine pairings, and personalized menus tailored to your event's theme. Perfect for business dinners, engagement parties, or family reunions."
+      },
+      "3": {
+        "title": "Custom Event Packages",
+        "price": "Starting at $99",
+        "shortDesc": "Tailored solutions for any occasion - let us bring your vision to life.",
+        "features": [
+          "Fully customizable menu options",
+          "Themed decorations and ambiance",
+          "Flexible pricing and packages"
+        ],
+        "description": "Whether you're planning a bridal shower, retirement party, or unique celebration, our team will work with you to create a memorable experience. From cocktail receptions to formal seated dinners, we accommodate special requests and dietary needs. Package prices vary based on group size and menu selections."
+      }
+    }
+  },
+  "book_a_table": {
+    "section_title": {
+      "main": "RESERVATION",
+      "subtitle": "Book a Table"
+    },
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "phone": "Your Phone",
+      "date": "Date",
+      "time": "Time",
+      "people": "# of people",
+      "message": "Message",
+      "loading": "Loading",
+      "error_message": "There was an error with your request. Please try again.",
+      "sent_message": "Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!",
+      "submit": "Book a Table"
+    }
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "subtitle": "What Our Guests Say",
+    "items": [
+      {
+        "quote": "The best dining experience I've had this year! The seafood pasta was cooked to perfection, and the service made us feel like VIPs. We'll definitely be back for our anniversary.",
+        "name": "Michael Johnson",
+        "role": "Food Critic",
+        "image": "assets/img/testimonials/testimonials-1.jpg"
+      },
+      {
+        "quote": "I hosted my company's holiday party here and everyone raved about the food. The staff handled our group of 30 with ease, and the private dining room was perfect. The steak melted in my mouth!",
+        "name": "Sarah Williams",
+        "role": "Marketing Director",
+        "image": "assets/img/testimonials/testimonials-2.jpg"
+      },
+      {
+        "quote": "As a chef myself, I'm very particular about restaurants. This place exceeded all expectations - innovative dishes with perfect flavor balance. The duck confit was the best I've had outside of France.",
+        "name": "David Chen",
+        "role": "Executive Chef",
+        "image": "assets/img/testimonials/testimonials-3.jpg"
+      },
+      {
+        "quote": "Our go-to spot for date night. The ambiance is romantic but not stuffy, and the wine pairings are always spot on. The chocolate soufflé is worth every calorie - we order it every time!",
+        "name": "Emily Rodriguez",
+        "role": "Regular Guest",
+        "image": "assets/img/testimonials/testimonials-4.jpg"
+      },
+      {
+        "quote": "Impeccable service from start to finish. The sommelier helped us discover an amazing local wine, and the chef accommodated our dietary restrictions without compromising on flavor. A truly memorable evening.",
+        "name": "James Wilson",
+        "role": "Travel Blogger",
+        "image": "assets/img/testimonials/testimonials-5.jpg"
+      }
+    ]
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Some photos from Our Restaurant"
+  },
+  "chefs": {
+    "title": "Team",
+    "subtitle": "Meet Our Culinary Experts",
+    "members": [
+      {
+        "name": "Walter White",
+        "position": "Master Chef"
+      },
+      {
+        "name": "Sarah Jhonson",
+        "position": "Patissier"
+      },
+      {
+        "name": "William Anderson",
+        "position": "Cook"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Contact Us",
+    "locationTitle": "Location",
+    "locationDetail": "A108 Adam Street, New York, NY 535022",
+    "openHoursTitle": "Open Hours",
+    "openHoursDetail": "Monday-Saturday:\n11:00 AM - 2300 PM",
+    "callTitle": "Call Us",
+    "callDetail": "+1 5589 55488 55",
+    "emailTitle": "Email Us",
+    "emailDetail": "info@example.com",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message",
+      "loading": "Loading",
+      "success": "Your message has been sent. Thank you!"
+    }
+  },
+  "footer": {
+    "about": {
+      "address1": "A108 Adam Street",
+      "address2": "New York, NY 535022",
+      "phone": "Phone",
+      "email": "Email"
+    },
+    "links": {
+      "title": "Useful Links",
+      "home": "Home",
+      "about": "About us",
+      "services": "Services",
+      "terms": "Terms of service",
+      "privacy": "Privacy policy"
+    },
+    "services": {
+      "title": "Our Services",
+      "webDesign": "Web Design",
+      "webDev": "Web Development",
+      "product": "Product Management",
+      "marketing": "Marketing",
+      "graphic": "Graphic Design"
+    },
+    "newsletter": {
+      "title": "Our Newsletter",
+      "desc": "Subscribe to our newsletter and receive the latest news about our products and services!",
+      "placeholder": "Your Email",
+      "subscribe": "Subscribe",
+      "loading": "Loading",
+      "success": "Your subscription request has been sent. Thank you!"
+    },
+    "copyright": {
+      "allRights": "All Rights Reserved",
+      "designedBy": "Designed by",
+      "distributedBy": "Distributed by"
+    }
+  }
+}

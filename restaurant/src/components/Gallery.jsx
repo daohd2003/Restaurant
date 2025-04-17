@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import GLightbox from 'glightbox';
 import 'glightbox/dist/css/glightbox.min.css';
 
-// Import hình ảnh
 const galleryImages = [
   '/assets/img/gallery/gallery-1.jpg',
   '/assets/img/gallery/gallery-2.jpg',
@@ -15,32 +15,33 @@ const galleryImages = [
 ];
 
 const Gallery = () => {
+  const { t } = useTranslation();
+
   useEffect(() => {
-    // Cấu hình GLightbox
     const lightbox = GLightbox({
       selector: '.glightbox',
-      touchNavigation: true,      // Bật swipe bằng cảm ứng
-      keyboardNavigation: true,   // Bật điều hướng bằng bàn phím
-      closeButton: true,          // Hiện nút đóng
-      loop: true,                // Lặp lại khi đến ảnh cuối
-      zoomable: true,            // Cho phép zoom
-      draggable: true,           // Cho phép kéo/swipe
-      descPosition: 'bottom',    // Vị trí mô tả
-      openEffect: 'zoom',        // Hiệu ứng mở
-      closeEffect: 'zoom',       // Hiệu ứng đóng
-      slideEffect: 'slide',      // Hiệu ứng chuyển ảnh (quan trọng cho swipe)
-      moreText: 'Xem thêm',
+      touchNavigation: true,
+      keyboardNavigation: true,
+      closeButton: true,
+      loop: true,
+      zoomable: true,
+      draggable: true,
+      descPosition: 'bottom',
+      openEffect: 'zoom',
+      closeEffect: 'zoom',
+      slideEffect: 'slide',
+      moreText: t('gallery.moreText', 'View more'),
       moreLength: 60
     });
 
     return () => lightbox.destroy();
-  }, []);
+  }, [t]);
 
   return (
     <section id="gallery" className="gallery section">
       <div className="container section-title" data-aos="fade-up">
-        <h2>Gallery</h2>
-        <p>Some photos from Our Restaurant</p>
+        <h2>{t('gallery.title')}</h2>
+        <p>{t('gallery.subtitle')}</p>
       </div>
 
       <div className="container-fluid" data-aos="fade-up" data-aos-delay={100}>
@@ -48,11 +49,7 @@ const Gallery = () => {
           {galleryImages.map((img, index) => (
             <div className="col-lg-3 col-md-4" key={index}>
               <div className="gallery-item">
-                <a
-                  href={img}
-                  className="glightbox"
-                  data-gallery="gallery-group"
-                >
+                <a href={img} className="glightbox" data-gallery="gallery-group">
                   <img
                     src={img}
                     alt={`Gallery ${index + 1}`}

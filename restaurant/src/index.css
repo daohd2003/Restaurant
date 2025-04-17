@@ -298,3 +298,27 @@ section[id] {
 #header .languages a {
   cursor: pointer;
 }
+
+#footer a {
+  cursor: pointer;
+}
+
+#specials .nav-tabs .nav-link {
+  cursor: pointer;
+}
+
+.languages ul li {
+  cursor: pointer;
+  padding: 0 8px;
+  font-weight: normal;
+}
+
+.languages ul li.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+
+.languages ul li:hover {
+  color: #ffffff;
+}

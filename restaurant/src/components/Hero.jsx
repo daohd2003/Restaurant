@@ -1,17 +1,19 @@
 import heroBg from '/assets/img/hero-bg.jpg'
+import { useTranslation } from 'react-i18next'
 
 const Hero = () => {
+  const { t } = useTranslation()
   return (
-    <section id="hero" className="hero section dark-background">
+    <section id="hero" className="hero section dark-background" >
       <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in" />
       <div className="container">
         <div className="row">
           <div className="col-lg-8 d-flex flex-column align-items-center align-items-lg-start">
             <h2 data-aos="fade-up" data-aos-delay={100}>
-              Welcome to <span>Restaurantly</span>
+              {t('hero.title_part1')} <span>{t('hero.title_part2')}</span>
             </h2>
             <p data-aos="fade-up" data-aos-delay={200}>
-              Delivering great food for more than 18 years!
+              {t('hero.description')}
             </p>
             <div
               className="d-flex mt-4"
@@ -23,14 +25,14 @@ const Hero = () => {
                 className="cta-btn"
                 style={{ textDecoration: 'none' , cursor: 'pointer'}}
               >
-                Our Menu
+                {t('hero.our_menu')}
               </a>
               <a
                 href="#book-a-table"
                 className="cta-btn"
                 style={{ textDecoration: 'none' , cursor: 'pointer'}}
               >
-                Book a Table
+                {t('hero.book_table')}
               </a>
             </div>
           </div>

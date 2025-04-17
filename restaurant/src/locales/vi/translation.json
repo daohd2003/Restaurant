@@ -1,0 +1,288 @@
+{
+  "header": {
+    "email": "contact@example.com",
+    "phone": "+1 5589 55488 55",
+    "languages": {
+      "en": "Anh",
+      "vi": "Việt"
+    },
+    "logo": "Restaurantly",
+    "nav_items": {
+      "hero": "Trang chủ",
+      "about": "Giới thiệu",
+      "menu": "Thực đơn",
+      "specials": "Món đặc biệt",
+      "events": "Sự kiện",
+      "chefs": "Đầu bếp",
+      "gallery": "Trưng ảnh",
+      "contact": "Liên hệ"
+    },
+    "dropdown": {
+      "title": "Danh mục",
+      "items": [
+        "Danh mục 1",
+        "Danh mục 2",
+        "Danh mục 3",
+        "Danh mục 4"
+      ]
+    },
+    "book_table": "Đặt bàn"
+  },
+  "hero": {
+    "title_part1": "Chào mừng đến với",
+    "title_part2": "Restaurantly",
+    "description": "Phục vụ những món ăn tuyệt vời hơn 18 năm!",
+    "our_menu": "Thực đơn",
+    "book_table": "Đặt bàn"
+  },
+  "about": {
+    "title": "Câu Chuyện Ẩm Thực Của Chúng Tôi",
+    "subtitle": "Được thành lập với niềm đam mê và sự tận tâm, nhà hàng chúng tôi mang đến hương vị chân thực và trải nghiệm ẩm thực tuyệt vời cho mọi thực khách.",
+    "features": [
+      "Nguyên liệu tươi ngon, nguồn gốc địa phương trong mỗi món ăn.",
+      "Đầu bếp chuyên nghiệp với nhiều năm kinh nghiệm.",
+      "Thực đơn theo mùa với những món ăn sáng tạo."
+    ],
+    "description": "Chúng tôi tự hào tạo ra những trải nghiệm ẩm thực đáng nhớ thông qua các món ăn được chế biến tỉ mỉ, sự hiếu khách nồng nhiệt và không gian ấm cúng. Mỗi bữa ăn đều kể một câu chuyện về truyền thống, sự đổi mới và sự xuất sắc trong ẩm thực."
+  },
+  "why_us": {
+    "title": "TẠI SAO CHỌN CHÚNG TÔI",
+    "subtitle": "Lý do chọn nhà hàng của chúng tôi",
+    "cards": [
+      {
+        "title": "Nguyên liệu cao cấp",
+        "description": "Chúng tôi chỉ sử dụng những nguyên liệu chất lượng cao nhất cho mọi món ăn. Mỗi bữa ăn đều được chế biến kỹ lưỡng và tinh tế."
+      },
+      {
+        "title": "Dịch vụ tuyệt vời",
+        "description": "Đội ngũ nhân viên tận tâm mang đến cho bạn trải nghiệm ẩm thực đáng nhớ. Sự hài lòng của bạn là ưu tiên hàng đầu của chúng tôi."
+      },
+      {
+        "title": "Không gian độc đáo",
+        "description": "Thưởng thức không gian được thiết kế tinh tế, kết hợp giữa hiện đại và ấm cúng để tạo nên môi trường ăn uống hoàn hảo."
+      }
+    ]
+  },
+  "menu": {
+    "title": "Thực đơn",
+    "subtitle": "Khám phá thực đơn hấp dẫn của chúng tôi",
+    "filters": {
+      "all": "Tất cả",
+      "Starters": "Món khai vị",
+      "Main Courses": "Món chính",
+      "Salads": "Salad",
+      "Desserts": "Tráng miệng",
+      "Drinks": "Đồ uống"
+    }
+  },
+  "specials": {
+    "title": "Món Đặc Biệt",
+    "subtitle": "Khám Phá Gợi Ý Từ Bếp Trưởng",
+    "tabs": {
+      "1": {
+        "title": "Món Đặc Trưng Của Bếp Trưởng",
+        "name": "Cơm Risotto Nấm Truffle Đặc Biệt",
+        "shortDesc": "Món ăn đoạt giải thưởng với nấm truffle nhập khẩu từ Ý và gạo Arborio",
+        "desc": "Được chế biến với nấm truffle theo mùa cao cấp, món risotto kem này được nấu hoàn hảo với phô mai parmesan và rượu vang trắng. Mỗi miếng đều mang lại hương vị đất đặc trưng không thể cưỡng lại. Công thức này đã được truyền qua ba thế hệ đầu bếp trong nhà hàng của chúng tôi."
+      },
+      "2": {
+        "title": "Món Ăn Theo Mùa",
+        "name": "Đĩa Thu Hoạch Mùa Thu",
+        "shortDesc": "Tôn vinh nông sản theo mùa từ các trang trại địa phương",
+        "desc": "Chúng tôi chỉ phục vụ món ăn này khi nguyên liệu đạt độ tươi ngon nhất. Gồm bí ngô nướng, cải Brussels caramel, nấm rừng và thịt ba chỉ ướp siro maple. Ăn kèm chutney nam việt quất và bánh focaccia hương thảo. Món ăn thay đổi hàng tuần tùy theo nguyên liệu thị trường."
+      },
+      "3": {
+        "title": "Thực Đơn Kết Hợp Rượu Vang",
+        "name": "Lựa Chọn Của Chuyên Gia Rượu",
+        "shortDesc": "Sự kết hợp hoàn hảo giữa rượu vang và các món ăn nổi bật",
+        "desc": "Chuyên gia rượu của chúng tôi đã chọn lọc thực đơn đặc biệt này gồm ba loại rượu vang cao cấp đến từ các vườn nho nhỏ. Thưởng thức cùng phô mai thủ công, thịt nguội và các món nhỏ phù hợp với từng loại rượu. Thực đơn thay đổi hàng tháng để giới thiệu hương vị mới."
+      },
+      "4": {
+        "title": "Bữa Sáng Cuối Tuần",
+        "name": "Bữa Brunch Chủ Nhật",
+        "shortDesc": "Cách tuyệt vời để kết thúc cuối tuần",
+        "desc": "Hãy tham gia bữa brunch nổi tiếng của chúng tôi vào mỗi Chủ Nhật với các món trứng làm theo yêu cầu, bánh waffle Bỉ, cá hồi hun khói, bánh ngọt tươi và cocktail mimosa không giới hạn. Nhạc jazz sống tạo không khí thư giãn trong khi bạn thưởng thức quầy tráng miệng phong phú của chúng tôi."
+      },
+      "5": {
+        "title": "Thực Đơn Thuần Chay",
+        "name": "Hành Trình Vị Giác Thuần Chay",
+        "shortDesc": "Khám phá nghệ thuật ẩm thực thuần chay sáng tạo",
+        "desc": "Các đầu bếp của chúng tôi đã thiết kế thực đơn 7 món thuần chay để chứng minh rằng ẩm thực chay cũng đầy sáng tạo. Điểm nhấn gồm bánh 'cua' từ mít, tartare củ dền và mousse bơ sô cô la khiến cả những người yêu thịt cũng phải bất ngờ. Tất cả nguyên liệu đều hữu cơ và địa phương."
+      }
+    }
+  },
+  "events": {
+    "title": "Sự Kiện",
+    "subtitle": "Khám Phá Các Sự Kiện Đặc Biệt",
+    "items": {
+      "1": {
+        "title": "Lễ Kỷ Niệm Sinh Nhật",
+        "price": "189 USD",
+        "shortDesc": "Biến ngày đặc biệt của bạn thành không thể quên với các gói sinh nhật cá nhân hóa của chúng tôi.",
+        "features": [
+          "Khu vực ăn uống riêng với trang trí lễ hội",
+          "Bánh sinh nhật đặc biệt từ đầu bếp bánh ngọt của chúng tôi",
+          "Tiệc mừng với rượu sâm panh miễn phí cho khách danh dự"
+        ],
+        "description": "Gói sinh nhật của chúng tôi bao gồm bữa ăn ba món với các lựa chọn cho mọi lứa tuổi, phục vụ chu đáo, và thông báo sinh nhật cá nhân. Phù hợp cho nhóm từ 10-25 người, với thực đơn có thể tùy chỉnh theo sở thích của bạn."
+      },
+      "2": {
+        "title": "Trải Nghiệm Ăn Uống Riêng Tư",
+        "price": "290 USD",
+        "shortDesc": "Sự kiện độc quyền cho các buổi họp công ty, kỷ niệm, hoặc các lễ kỷ niệm riêng tư.",
+        "features": [
+          "Đặt toàn bộ nhà hàng hoặc phòng riêng",
+          "Thực đơn thử rượu tùy chỉnh với nhiều món",
+          "Điều phối viên sự kiện và đội ngũ phục vụ tận tình"
+        ],
+        "description": "Các lựa chọn ăn uống riêng tư của chúng tôi có thể phục vụ nhóm từ 15-100 khách với các bố trí linh hoạt và khả năng sử dụng các thiết bị âm thanh hình ảnh. Tận hưởng trải nghiệm của bếp trưởng, kết hợp rượu vang, và thực đơn cá nhân hóa theo chủ đề sự kiện của bạn. Phù hợp cho các bữa tối công ty, tiệc đính hôn, hoặc họp mặt gia đình."
+      },
+      "3": {
+        "title": "Gói Sự Kiện Tùy Chỉnh",
+        "price": "Từ 99 USD",
+        "shortDesc": "Giải pháp tùy chỉnh cho bất kỳ dịp nào - hãy để chúng tôi biến tầm nhìn của bạn thành hiện thực.",
+        "features": [
+          "Các tùy chọn thực đơn hoàn toàn có thể thay đổi",
+          "Trang trí và không gian theo chủ đề",
+          "Giá cả và gói dịch vụ linh hoạt"
+        ],
+        "description": "Dù bạn đang lên kế hoạch cho tiệc cưới, tiệc chia tay, hay một sự kiện đặc biệt nào đó, đội ngũ của chúng tôi sẽ làm việc cùng bạn để tạo ra một trải nghiệm khó quên. Từ các buổi tiếp tân cocktail đến các bữa tối trang trọng, chúng tôi sẽ đáp ứng các yêu cầu đặc biệt và nhu cầu ăn uống riêng biệt. Giá gói thay đổi tùy theo số lượng khách và lựa chọn thực đơn."
+      }
+    }
+  },
+  "book_a_table": {
+    "section_title": {
+      "main": "ĐẶT BÀN",
+      "subtitle": "Đặt Bàn Ngay"
+    },
+    "form": {
+      "name": "Họ và Tên",
+      "email": "Email của Bạn",
+      "phone": "Số Điện Thoại",
+      "date": "Ngày",
+      "time": "Giờ",
+      "people": "Số người",
+      "message": "Lời nhắn",
+      "loading": "Đang gửi...",
+      "error_message": "Có lỗi xảy ra. Vui lòng thử lại.",
+      "sent_message": "Yêu cầu đặt bàn của bạn đã được gửi. Chúng tôi sẽ gọi lại hoặc gửi email để xác nhận. Cảm ơn bạn!",
+      "submit": "Đặt Bàn Ngay"
+    }
+  },
+  "testimonials": {
+    "title": "Đánh giá",
+    "subtitle": "Khách hàng nói gì về chúng tôi",
+    "items": [
+      {
+        "quote": "Trải nghiệm ẩm thực tuyệt vời nhất của tôi trong năm nay! Mì hải sản được nấu hoàn hảo, và dịch vụ khiến chúng tôi cảm thấy như khách VIP. Chắc chắn chúng tôi sẽ quay lại vào dịp kỷ niệm.",
+        "name": "Michael Johnson",
+        "role": "Nhà phê bình ẩm thực",
+        "image": "assets/img/testimonials/testimonials-1.jpg"
+      },
+      {
+        "quote": "Tôi đã tổ chức tiệc cuối năm của công ty tại đây và mọi người đều khen ngợi món ăn. Nhân viên xử lý nhóm 30 người rất chuyên nghiệp, và phòng ăn riêng thì hoàn hảo. Bít tết thì tan ngay trong miệng!",
+        "name": "Sarah Williams",
+        "role": "Giám đốc Marketing",
+        "image": "assets/img/testimonials/testimonials-2.jpg"
+      },
+      {
+        "quote": "Là một đầu bếp, tôi rất kén chọn khi đến nhà hàng. Nơi này vượt xa mong đợi - món ăn sáng tạo với hương vị hoàn hảo. Vịt confit ở đây là món ngon nhất ngoài nước Pháp mà tôi từng thử.",
+        "name": "David Chen",
+        "role": "Bếp trưởng",
+        "image": "assets/img/testimonials/testimonials-3.jpg"
+      },
+      {
+        "quote": "Địa điểm lý tưởng cho những buổi hẹn hò. Không gian lãng mạn nhưng không gò bó, kết hợp rượu vang hoàn hảo. Bánh soufflé sô-cô-la thì ngon tuyệt - lần nào cũng phải gọi!",
+        "name": "Emily Rodriguez",
+        "role": "Khách quen",
+        "image": "assets/img/testimonials/testimonials-4.jpg"
+      },
+      {
+        "quote": "Dịch vụ hoàn hảo từ đầu đến cuối. Chuyên gia rượu giúp chúng tôi khám phá một loại rượu địa phương tuyệt vời, và đầu bếp đã điều chỉnh thực đơn theo chế độ ăn của chúng tôi mà vẫn giữ được hương vị.",
+        "name": "James Wilson",
+        "role": "Blogger du lịch",
+        "image": "assets/img/testimonials/testimonials-5.jpg"
+      }
+    ]
+  },
+  "gallery": {
+    "title": "Ảnh sưu tập",
+    "subtitle": "Một số hình ảnh từ nhà hàng của chúng tôi"
+  },
+  "chefs": {
+    "title": "Đội ngũ",
+    "subtitle": "Gặp gỡ các chuyên gia ẩm thực của chúng tôi",
+    "members": [
+      {
+        "name": "Walter White",
+        "position": "Bếp trưởng"
+      },
+      {
+        "name": "Sarah Jhonson",
+        "position": "Thợ làm bánh"
+      },
+      {
+        "name": "William Anderson",
+        "position": "Đầu bếp"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Liên hệ",
+    "subtitle": "Liên hệ với chúng tôi",
+    "locationTitle": "Địa chỉ",
+    "locationDetail": "A108 Đường Adam, New York, NY 535022",
+    "openHoursTitle": "Giờ mở cửa",
+    "openHoursDetail": "Thứ Hai - Thứ Bảy:\n11:00 sáng - 11:00 tối",
+    "callTitle": "Gọi cho chúng tôi",
+    "callDetail": "+1 5589 55488 55",
+    "emailTitle": "Gửi email",
+    "emailDetail": "info@example.com",
+    "form": {
+      "name": "Tên của bạn",
+      "email": "Email của bạn",
+      "subject": "Chủ đề",
+      "message": "Tin nhắn",
+      "send": "Gửi tin nhắn",
+      "loading": "Đang gửi...",
+      "success": "Tin nhắn của bạn đã được gửi. Cảm ơn bạn!"
+    }
+  },
+  "footer": {
+    "about": {
+      "address1": "Số 108, Đường Adam",
+      "address2": "New York, NY 535022",
+      "phone": "Điện thoại",
+      "email": "Email"
+    },
+    "links": {
+      "title": "Liên kết hữu ích",
+      "home": "Trang chủ",
+      "about": "Về chúng tôi",
+      "services": "Dịch vụ",
+      "terms": "Điều khoản dịch vụ",
+      "privacy": "Chính sách bảo mật"
+    },
+    "services": {
+      "title": "Dịch vụ của chúng tôi",
+      "webDesign": "Thiết kế web",
+      "webDev": "Phát triển web",
+      "product": "Quản lý sản phẩm",
+      "marketing": "Tiếp thị",
+      "graphic": "Thiết kế đồ họa"
+    },
+    "newsletter": {
+      "title": "Bản tin của chúng tôi",
+      "desc": "Đăng ký bản tin để nhận thông tin mới nhất về sản phẩm và dịch vụ!",
+      "placeholder": "Email của bạn",
+      "subscribe": "Đăng ký",
+      "loading": "Đang gửi...",
+      "success": "Yêu cầu đăng ký của bạn đã được gửi. Cảm ơn!"
+    },
+    "copyright": {
+      "allRights": "Mọi quyền được bảo lưu",
+      "designedBy": "Thiết kế bởi",
+      "distributedBy": "Phân phối bởi"
+    }
+  }
+}

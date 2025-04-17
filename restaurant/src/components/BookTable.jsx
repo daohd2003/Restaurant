@@ -1,10 +1,14 @@
+import { useTranslation } from 'react-i18next';
+
 const BookTable = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="book-a-table" className="book-a-table section">
       {/* Section Title */}
       <div className="container section-title" data-aos="fade-up">
-        <h2>RESERVATION</h2>
-        <p>Book a Table</p>
+        <h2>{t('book_a_table.section_title.main')}</h2>
+        <p>{t('book_a_table.section_title.subtitle')}</p>
       </div>
       {/* End Section Title */}
       <div className="container" data-aos="fade-up" data-aos-delay={100}>
@@ -21,7 +25,7 @@ const BookTable = () => {
                 name="name"
                 className="form-control"
                 id="name"
-                placeholder="Your Name"
+                placeholder={t('book_a_table.form.name')}
                 required=""
               />
             </div>
@@ -31,7 +35,7 @@ const BookTable = () => {
                 className="form-control"
                 name="email"
                 id="email"
-                placeholder="Your Email"
+                placeholder={t('book_a_table.form.email')}
                 required=""
               />
             </div>
@@ -41,7 +45,7 @@ const BookTable = () => {
                 className="form-control"
                 name="phone"
                 id="phone"
-                placeholder="Your Phone"
+                placeholder={t('book_a_table.form.phone')}
                 required=""
               />
             </div>
@@ -51,7 +55,7 @@ const BookTable = () => {
                 name="date"
                 className="form-control"
                 id="date"
-                placeholder="Date"
+                placeholder={t('book_a_table.form.date')}
                 required=""
               />
             </div>
@@ -61,7 +65,7 @@ const BookTable = () => {
                 className="form-control"
                 name="time"
                 id="time"
-                placeholder="Time"
+                placeholder={t('book_a_table.form.time')}
                 required=""
               />
             </div>
@@ -71,7 +75,7 @@ const BookTable = () => {
                 className="form-control"
                 name="people"
                 id="people"
-                placeholder="# of people"
+                placeholder={t('book_a_table.form.people')}
                 required=""
               />
             </div>
@@ -81,18 +85,17 @@ const BookTable = () => {
               className="form-control"
               name="message"
               rows={5}
-              placeholder="Message"
+              placeholder={t('book_a_table.form.message')}
               defaultValue={''}
             />
           </div>
           <div className="text-center mt-3">
-            <div className="loading">Loading</div>
+            <div className="loading">{t('book_a_table.form.loading')}</div>
             <div className="error-message" />
             <div className="sent-message">
-              Your booking request was sent. We will call back or send an Email
-              to confirm your reservation. Thank you!
+            {t('book_a_table.form.sent_message')}
             </div>
-            <button type="submit">Book a Table</button>
+            <button type="submit">{t('book_a_table.form.submit')}</button>
           </div>
         </form>
         {/* End Reservation Form */}
