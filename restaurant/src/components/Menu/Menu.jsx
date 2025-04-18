@@ -31,8 +31,6 @@ const Menu = () => {
 
   // Initialize Isotope
   useEffect(() => {
-    if (!categories.length) return;
-
     const iso = new Isotope('.isotope-container', {
       itemSelector: '.isotope-item',
       layoutMode: 'masonry',

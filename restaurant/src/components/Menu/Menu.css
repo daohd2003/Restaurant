@@ -1,38 +1,23 @@
-/* Đảm bảo các món menu được chia thành 2 cột */
+/* KHÔNG cần display: grid ở đây */
 .isotope-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 cột đều nhau */
-  gap: 30px; /* Khoảng cách giữa các item */
+  /* Không cần gì thêm, vì đã có Bootstrap .row */
 }
 
-/* Responsive: Khi màn hình nhỏ, chuyển sang 1 cột */
-@media (max-width: 768px) {
-  .isotope-container {
-    grid-template-columns: 1fr; /* Chỉ 1 cột trên màn hình nhỏ */
-  }
-}
-
-/* Đảm bảo các item có kích thước phù hợp */
+/* Mỗi item 6 cột = 2 món mỗi hàng */
 .isotope-item {
-  margin-bottom: 30px; /* Khoảng cách giữa các item */
+  margin-bottom: 30px;
 }
 
-/* Cập nhật hình ảnh menu cho phù hợp với layout */
+/* Ảnh món ăn */
 .menu-img {
   width: 100%;
   height: 90px;
   object-fit: cover;
   transition: transform 0.3s;
+  cursor: pointer;
 }
 
-/* Cho tên món ăn */
+/* Tên món ăn */
 .menu-content a {
   cursor: pointer;
-  /* Các thuộc tính hiện có khác... */
-}
-
-/* Cho ảnh món ăn */
-.menu-img {
-  cursor: pointer;
-  /* Các thuộc tính hiện có khác... */
 }
