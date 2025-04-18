@@ -1,85 +1,117 @@
-import React, { useEffect, useRef, useState } from 'react'
-import Isotope from 'isotope-layout'
-import imagesLoaded from 'imagesloaded'
-import './Menu.css'
-import { getCategoryWithMenuItemsAPI } from '../../api/category'
+import React, { useEffect, useRef, useState, useCallback } from 'react';
+import Isotope from 'isotope-layout';
+import imagesLoaded from 'imagesloaded';
+import './Menu.css';
+import { getCategoryWithMenuItemsAPI } from '../../api/category';
 import {
   setupMenuHubListeners,
   removeMenuHubListeners,
-} from '../../services/signalR'
-import { useTranslation } from 'react-i18next'
+} from '../../services/signalR';
+import { useTranslation } from 'react-i18next';
 
 const Menu = () => {
-  const isotope = useRef()
-  const filterKey = useRef('*')
-  const [categories, setCategories] = useState([])
-  const { t } = useTranslation()
+  const isotope = useRef();
+  const filterKey = useRef('*');
+  const [categories, setCategories] = useState([]);
+  const [isInitialized, setIsInitialized] = useState(false);
+  const { t } = useTranslation();
 
   // Fetch API
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await getCategoryWithMenuItemsAPI()
-        setCategories(res)
+        const res = await getCategoryWithMenuItemsAPI();
+        setCategories(res);
       } catch (err) {
-        console.error('Fetch category with menuItems failed', err)
+        console.error('Fetch category with menuItems failed', err);
       }
-    }
-    fetchData()
-  }, [])
+    };
+    fetchData();
+  }, []);
 
   // Initialize Isotope
   useEffect(() => {
+    if (!categories.length) return;
+
     const iso = new Isotope('.isotope-container', {
       itemSelector: '.isotope-item',
       layoutMode: 'masonry',
       masonry: { columnWidth: '.isotope-item' },
-    })
+    });
 
-    isotope.current = iso
+    isotope.current = iso;
+    setIsInitialized(true);
 
     imagesLoaded('.isotope-container').on('progress', () => {
-      iso.layout()
-    })
-
-    return () => iso.destroy()
-  }, [categories])
-
-  // Sửa lại useEffect cho SignalR
-  useEffect(() => {
-    const callbacks = {
-      onMenuUpdated: (updatedCategories) => {
-        // Thay đổi tham số từ newItem sang updatedCategories
-        setCategories(updatedCategories) // Cập nhật toàn bộ danh sách thay vì từng item
-      },
-      onCategoryUpdated: (updatedCategories) => {
-        setCategories(updatedCategories)
-      },
-    }
-
-    setupMenuHubListeners(callbacks)
+      iso.layout();
+    });
 
     return () => {
-      removeMenuHubListeners()
+      iso.destroy();
+      setIsInitialized(false);
+    };
+  }, [categories.length]); // Chỉ phụ thuộc vào độ dài categories
+
+  // Xử lý cập nhật dữ liệu và bố cục
+  useEffect(() => {
+    if (!isInitialized || !isotope.current) return;
+
+    isotope.current.reloadItems();
+    isotope.current.arrange({ filter: filterKey.current });
+
+    imagesLoaded('.isotope-container').on('progress', () => {
+      isotope.current.layout();
+    });
+  }, [categories, isInitialized]); // Chạy lại khi categories hoặc trạng thái khởi tạo thay đổi
+
+  // SignalR listeners - không cần phụ thuộc vào filterKey
+  useEffect(() => {
+    if (!isInitialized) return;
+
+    const callbacks = {
+      onMenuUpdated: (updatedCategories) => {
+        setCategories(prev => {
+          // So sánh sâu để tránh cập nhật không cần thiết
+          return JSON.stringify(prev) === JSON.stringify(updatedCategories) 
+            ? prev 
+            : updatedCategories;
+        });
+      },
+      onCategoryUpdated: (updatedCategories) => {
+        setCategories(prev => {
+          return JSON.stringify(prev) === JSON.stringify(updatedCategories) 
+            ? prev 
+            : updatedCategories;
+        });
+      },
+    };
+
+    setupMenuHubListeners(callbacks);
+
+    return () => {
+      removeMenuHubListeners();
+    };
+  }, [isInitialized]); // Chỉ phụ thuộc vào isInitialized
+
+  // Sử dụng useCallback để tránh tạo hàm mới mỗi lần render
+  const handleFilterKeyChange = useCallback((key) => {
+    filterKey.current = key;
+    if (isotope.current) {
+      isotope.current.arrange({ filter: key });
     }
-  }, [])
+  }, []);
 
-  // Filter functions
-  const handleFilterKeyChange = (key) => {
-    filterKey.current = key
-    isotope.current.arrange({ filter: key })
-  }
+  const setActiveFilter = useCallback((key) => {
+    const buttons = document.querySelectorAll('.menu-filters li');
+    buttons.forEach((btn) => {
+      btn.classList.toggle('filter-active', btn.dataset.filter === key);
+    });
+  }, []);
 
-  const setActiveFilter = (key) => {
-    document.querySelectorAll('.menu-filters li').forEach((btn) => {
-      btn.classList.toggle('filter-active', btn.dataset.filter === key)
-    })
-  }
-
-  const handleFilterClick = (key) => {
-    handleFilterKeyChange(key)
-    setActiveFilter(key)
-  }
+  const handleFilterClick = useCallback((key) => {
+    handleFilterKeyChange(key);
+    setActiveFilter(key);
+  }, [handleFilterKeyChange, setActiveFilter]);
 
   return (
     <section id="menu" className="menu section">
