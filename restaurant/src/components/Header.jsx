@@ -110,13 +110,18 @@ const Header = () => {
                 onClick={() => changeLanguage('en')}
                 className={i18n.language === 'en' ? 'active' : ''}
               >
-                {t('header.languages.en')}
+                <img src="/flags/us.svg" alt="English" width="24" height="16" />
               </li>
               <li
                 onClick={() => changeLanguage('vi')}
                 className={i18n.language === 'vi' ? 'active' : ''}
               >
-                {t('header.languages.vi')}
+                <img
+                  src="/flags/vn.svg"
+                  alt="Tiếng Việt"
+                  width="24"
+                  height="16"
+                />
               </li>
             </ul>
           </div>
