@@ -15,6 +15,7 @@ restaurant_backend/restaurantWebAPI/restaurantWebAPI/obj/
 !.vscode/extensions.json
 .idea/
 .DS_Store
+.vs/
 
 # Visual Studio solution files
 *.sln
