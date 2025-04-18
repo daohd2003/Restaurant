@@ -1,0 +1,47 @@
+# Build output
+restaurant_backend/restaurantWebAPI/restaurantWebAPI/bin/
+restaurant_backend/restaurantWebAPI/restaurantWebAPI/obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.ntvs*
+*.njsproj
+
+# IDE/Editor settings
+.vscode/
+!.vscode/extensions.json
+.idea/
+.DS_Store
+
+# Visual Studio solution files
+*.sln
+*.sw?
+
+# Rider / ReSharper
+_ReSharper*/
+*.DotSettings.user
+
+# ASP.NET Core secrets
+secrets.json
+
+# NuGet packages
+*.nupkg
+packages/
+
+# Entity Framework Migrations snapshots (optional)
+**/*Snapshot.cs
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Ignore unused components
+restaurant_backend/restaurantWebAPI/restaurantWebAPI/Components/OldMenuComponent.cs
+restaurant_backend/restaurantWebAPI/restaurantWebAPI/Components/TestComponents/
