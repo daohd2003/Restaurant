@@ -1,33 +1,35 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
-import Isotope from 'isotope-layout';
-import imagesLoaded from 'imagesloaded';
-import './Menu.css';
-import { getCategoryWithMenuItemsAPI } from '../../api/category';
+import React, { useEffect, useRef, useState, useCallback } from 'react'
+import Isotope from 'isotope-layout'
+import imagesLoaded from 'imagesloaded'
+import './Menu.css'
+import { getCategoryWithMenuItemsAPI } from '../../api/category'
 import {
   setupMenuHubListeners,
   removeMenuHubListeners,
-} from '../../services/signalR';
-import { useTranslation } from 'react-i18next';
+} from '../../services/signalR'
+import { useTranslation } from 'react-i18next'
 
 const Menu = () => {
-  const isotope = useRef();
-  const filterKey = useRef('*');
-  const [categories, setCategories] = useState([]);
-  const [isInitialized, setIsInitialized] = useState(false);
-  const { t } = useTranslation();
+  const isotope = useRef()
+  const filterKey = useRef('*')
+  const [categories, setCategories] = useState([])
+  const [isInitialized, setIsInitialized] = useState(false)
+  const { t } = useTranslation()
+  const [selectedItem, setSelectedItem] = useState(null)
+  const [showPopup, setShowPopup] = useState(false)
 
   // Fetch API
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await getCategoryWithMenuItemsAPI();
-        setCategories(res);
+        const res = await getCategoryWithMenuItemsAPI()
+        setCategories(res)
       } catch (err) {
-        console.error('Fetch category with menuItems failed', err);
+        console.error('Fetch category with menuItems failed', err)
       }
-    };
-    fetchData();
-  }, []);
+    }
+    fetchData()
+  }, [])
 
   // Initialize Isotope
   useEffect(() => {
@@ -35,81 +37,97 @@ const Menu = () => {
       itemSelector: '.isotope-item',
       layoutMode: 'masonry',
       masonry: { columnWidth: '.isotope-item' },
-    });
+    })
 
-    isotope.current = iso;
-    setIsInitialized(true);
+    isotope.current = iso
+    setIsInitialized(true)
 
     imagesLoaded('.isotope-container').on('progress', () => {
-      iso.layout();
-    });
+      iso.layout()
+    })
 
     return () => {
-      iso.destroy();
-      setIsInitialized(false);
-    };
-  }, [categories.length]); // Chỉ phụ thuộc vào độ dài categories
+      iso.destroy()
+      setIsInitialized(false)
+    }
+  }, [categories.length]) // Chỉ phụ thuộc vào độ dài categories
 
   // Xử lý cập nhật dữ liệu và bố cục
   useEffect(() => {
-    if (!isInitialized || !isotope.current) return;
+    if (!isInitialized || !isotope.current) return
 
-    isotope.current.reloadItems();
-    isotope.current.arrange({ filter: filterKey.current });
+    isotope.current.reloadItems()
+    isotope.current.arrange({ filter: filterKey.current })
 
     imagesLoaded('.isotope-container').on('progress', () => {
-      isotope.current.layout();
-    });
-  }, [categories, isInitialized]); // Chạy lại khi categories hoặc trạng thái khởi tạo thay đổi
+      isotope.current.layout()
+    })
+  }, [categories, isInitialized]) // Chạy lại khi categories hoặc trạng thái khởi tạo thay đổi
 
   // SignalR listeners - không cần phụ thuộc vào filterKey
   useEffect(() => {
-    if (!isInitialized) return;
+    if (!isInitialized) return
 
     const callbacks = {
       onMenuUpdated: (updatedCategories) => {
-        setCategories(prev => {
+        setCategories((prev) => {
           // So sánh sâu để tránh cập nhật không cần thiết
-          return JSON.stringify(prev) === JSON.stringify(updatedCategories) 
-            ? prev 
-            : updatedCategories;
-        });
+          return JSON.stringify(prev) === JSON.stringify(updatedCategories)
+            ? prev
+            : updatedCategories
+        })
       },
       onCategoryUpdated: (updatedCategories) => {
-        setCategories(prev => {
-          return JSON.stringify(prev) === JSON.stringify(updatedCategories) 
-            ? prev 
-            : updatedCategories;
-        });
+        setCategories((prev) => {
+          return JSON.stringify(prev) === JSON.stringify(updatedCategories)
+            ? prev
+            : updatedCategories
+        })
       },
-    };
+    }
 
-    setupMenuHubListeners(callbacks);
+    setupMenuHubListeners(callbacks)
 
     return () => {
-      removeMenuHubListeners();
-    };
-  }, [isInitialized]); // Chỉ phụ thuộc vào isInitialized
+      removeMenuHubListeners()
+    }
+  }, [isInitialized]) // Chỉ phụ thuộc vào isInitialized
 
   // Sử dụng useCallback để tránh tạo hàm mới mỗi lần render
   const handleFilterKeyChange = useCallback((key) => {
-    filterKey.current = key;
+    filterKey.current = key
     if (isotope.current) {
-      isotope.current.arrange({ filter: key });
+      isotope.current.arrange({ filter: key })
     }
-  }, []);
+  }, [])
 
   const setActiveFilter = useCallback((key) => {
-    const buttons = document.querySelectorAll('.menu-filters li');
+    const buttons = document.querySelectorAll('.menu-filters li')
     buttons.forEach((btn) => {
-      btn.classList.toggle('filter-active', btn.dataset.filter === key);
-    });
-  }, []);
+      btn.classList.toggle('filter-active', btn.dataset.filter === key)
+    })
+  }, [])
 
-  const handleFilterClick = useCallback((key) => {
-    handleFilterKeyChange(key);
-    setActiveFilter(key);
-  }, [handleFilterKeyChange, setActiveFilter]);
+  const handleFilterClick = useCallback(
+    (key) => {
+      handleFilterKeyChange(key)
+      setActiveFilter(key)
+    },
+    [handleFilterKeyChange, setActiveFilter]
+  )
+
+  const handleItemClick = (item, category) => {
+    setSelectedItem({
+      ...item,
+      categoryName: category.name,
+    })
+    setShowPopup(true)
+  }
+
+  const closePopup = () => {
+    setShowPopup(false)
+    setSelectedItem(null)
+  }
 
   return (
     <section id="menu" className="menu section">
@@ -154,10 +172,19 @@ const Menu = () => {
               <div
                 key={item.id}
                 className={`col-lg-6 menu-item isotope-item filter-${category.slug}`}
+                onClick={() => handleItemClick(item, category)}
               >
                 <img src={item.imageUrl} className="menu-img" alt={item.name} />
                 <div className="menu-content">
-                  <a href="#">{item.name}</a>
+                  <a
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      handleItemClick(item, category)
+                    }}
+                  >
+                    {item.name}
+                  </a>
                   <span>${item.price.toFixed(2)}</span>
                 </div>
                 <div className="menu-ingredients">{item.description}</div>
@@ -165,6 +192,85 @@ const Menu = () => {
             ))
           )}
         </div>
+      </div>
+      {/* Popup */}
+      <div
+        className={`menu-popup ${showPopup ? 'active' : ''}`}
+        onClick={closePopup}
+      >
+        {selectedItem && (
+          <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+            <span className="popup-close" onClick={closePopup}>
+              &times;
+            </span>
+
+            <div className="popup-image-container">
+              <img
+                src={selectedItem.imageUrl || '/images/default-food.jpg'}
+                className="popup-image"
+                alt={selectedItem.name}
+                onError={(e) => {
+                  e.target.src = '/images/default-food.jpg'
+                }}
+              />
+            </div>
+
+            <div className="popup-details">
+              <h2 className="popup-title">{selectedItem.name}</h2>
+              <div className="popup-price">
+                ${selectedItem.price.toFixed(2)}
+              </div>
+
+              <div className="popup-meta">
+                {selectedItem.categoryName && (
+                  <span className="popup-category">
+                    {t('menu.filters.' + selectedItem.categoryName)}
+                  </span>
+                )}
+                {selectedItem.spicyLevel && (
+                  <span className="popup-spicy">
+                    {t('menu.popup.spicy', {
+                      level: t(
+                        `menu.popup.spicyLevels.${selectedItem.spicyLevel.toLowerCase()}`
+                      ),
+                    })}
+                  </span>
+                )}
+                {selectedItem.preparationTime > 0 && (
+                  <span className="popup-time">
+                    {t('menu.popup.time', {
+                      time: selectedItem.preparationTime,
+                    })}
+                  </span>
+                )}
+                <span className="popup-availability">
+                  {selectedItem.isAvailable
+                    ? t('menu.popup.available')
+                    : t('menu.popup.unavailable')}
+                </span>
+              </div>
+
+              <div className="popup-description">
+                {selectedItem.description}
+              </div>
+
+              {selectedItem.ingredients && (
+                <div className="popup-section">
+                  <h4>{t('menu.popup.ingredients')}:</h4>
+                  <p>{selectedItem.ingredients}</p>
+                </div>
+              )}
+
+              {selectedItem.isFeatured && (
+                <div className="popup-section">
+                  <span className="featured-badge">
+                    {t('menu.popup.featured')}
+                  </span>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )

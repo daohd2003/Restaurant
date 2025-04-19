@@ -73,6 +73,20 @@
       "Salads": "Salads",
       "Desserts": "Desserts",
       "Drinks": "Drinks"
+    },
+    "popup": {
+      "spicy": "Spicy Level: {{level}}",
+      "spicyLevels": {
+        "mild": "Mild",
+        "medium": "Medium",
+        "hot": "Hot",
+        "none": "None"
+      },
+      "time": "Preparation: {{time}} minutes",
+      "available": "Available",
+      "unavailable": "Unavailable",
+      "ingredients": "Ingredients",
+      "featured": "Chef's Recommendation"
     }
   },
   "specials": {

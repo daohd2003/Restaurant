@@ -73,6 +73,20 @@
       "Salads": "Salad",
       "Desserts": "Tráng miệng",
       "Drinks": "Đồ uống"
+    },
+    "popup": {
+      "spicy": "Độ cay: {{level}}",
+      "spicyLevels": {
+        "mild": "Ít cay",
+        "medium": "Cay vừa",
+        "hot": "Rất cay",
+        "none": "Không cay"
+      },
+      "time": "Thời gian chuẩn bị: {{time}} phút",
+      "available": "Có sẵn",
+      "unavailable": "Hết món",
+      "ingredients": "Thành phần",
+      "featured": "Đầu bếp đề cử"
     }
   },
   "specials": {

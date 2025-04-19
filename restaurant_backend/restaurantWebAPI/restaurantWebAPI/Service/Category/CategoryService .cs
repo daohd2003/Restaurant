@@ -68,6 +68,14 @@ namespace restaurantWebAPI.Services
                 .OrderBy(c => c.DisplayOrder)
                 .ToListAsync();
 
+            foreach (var category in categories)
+            {
+                category.MenuItems = category.MenuItems
+                    .Where(m => m.IsAvailable && m.IsFeatured)
+                    .OrderBy(m => m.Name)
+                    .ToList();
+            }
+
             return _mapper.Map<IEnumerable<CategoryDto>>(categories);
         }
     }
