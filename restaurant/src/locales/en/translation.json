@@ -181,7 +181,7 @@
       "loading": "Loading",
       "error_message": "There was an error with your request. Please try again.",
       "sent_message": "Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!",
-      "submit": "Book a Table"
+      "submit": "Find a Table"
     }
   },
   "testimonials": {
@@ -299,5 +299,44 @@
       "designedBy": "Designed by",
       "distributedBy": "Distributed by"
     }
+  },
+  "fullMenu": {
+    "filterTitle": "Filter",
+    "categoryLabel": "Category",
+    "spicinessLabel": "Spiciness",
+    "maxPrepTimeLabel": "Max Prep Time: {{time}} mins",
+    "spicyOptions": {
+      "all": "All",
+      "mild": "Mild",
+      "medium": "Medium",
+      "hot": "Hot",
+      "extraHot": "Extra Hot",
+      "none": "None"
+    },
+    "menuTitle": "Menu Items",
+    "loading": "Loading menu...",
+    "error": "Failed to load data. Please try again later.",
+    "noDishes": "No matching dishes found.",
+    "categoryPrefix": "Category:",
+    "price": "Price",
+    "spiciness": "Spiciness",
+    "prepTime": "Prep Time",
+    "availability": {
+      "available": "Available",
+      "outOfStock": "Out of stock"
+    },
+    "pagination": {
+      "prev": "< Prev",
+      "next": "Next >"
+    },
+    "categories": {
+      "all": "All",
+      "starters": "Starters",
+      "main Courses": "Main Courses",
+      "salads": "Salads",
+      "desserts": "Desserts",
+      "drinks": "Drinks"
+    },
+    "minutes": "minutes"
   }
 }

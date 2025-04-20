@@ -181,7 +181,7 @@
       "loading": "Đang gửi...",
       "error_message": "Có lỗi xảy ra. Vui lòng thử lại.",
       "sent_message": "Yêu cầu đặt bàn của bạn đã được gửi. Chúng tôi sẽ gọi lại hoặc gửi email để xác nhận. Cảm ơn bạn!",
-      "submit": "Đặt Bàn Ngay"
+      "submit": "Tìm Bàn Ngay"
     }
   },
   "testimonials": {
@@ -299,5 +299,44 @@
       "designedBy": "Thiết kế bởi",
       "distributedBy": "Phân phối bởi"
     }
+  },
+  "fullMenu": {
+    "filterTitle": "Bộ lọc",
+    "categoryLabel": "Danh mục",
+    "spicinessLabel": "Mức độ cay",
+    "maxPrepTimeLabel": "Thời gian chuẩn bị tối đa: {{time}} phút",
+    "spicyOptions": {
+      "all": "Tất cả",
+      "mild": "Nhẹ",
+      "medium": "Vừa",
+      "hot": "Cay",
+      "extraHot": "Cực cay",
+      "none": "Không cay"
+    },
+    "menuTitle": "Thực đơn",
+    "loading": "Đang tải thực đơn...",
+    "error": "Tải dữ liệu thất bại. Vui lòng thử lại sau.",
+    "noDishes": "Không tìm thấy món phù hợp.",
+    "categoryPrefix": "Danh mục:",
+    "price": "Giá",
+    "spiciness": "Độ cay",
+    "prepTime": "Thời gian chuẩn bị",
+    "availability": {
+      "available": "Còn món",
+      "outOfStock": "Hết món"
+    },
+    "pagination": {
+      "prev": "< Trước",
+      "next": "Tiếp >"
+    },
+    "categories": {
+      "all": "Tất cả",
+      "starters": "Món khai vị",
+      "maincourses": "Món chính",
+      "salads": "Salad",
+      "desserts": "Tráng miệng",
+      "drinks": "Đồ uống"
+    },
+    "minutes": "phút"
   }
 }
