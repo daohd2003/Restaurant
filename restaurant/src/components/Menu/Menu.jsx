@@ -8,6 +8,7 @@ import {
   removeMenuHubListeners,
 } from '../../services/signalR'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 const Menu = () => {
   const isotope = useRef()
@@ -139,8 +140,11 @@ const Menu = () => {
       <div className="container">
         {/* Filter Buttons */}
         <div className="row" data-aos="fade-up" data-aos-delay={100}>
-          <div className="col-lg-12 d-flex justify-content-center">
-            <ul className="menu-filters isotope-filters">
+          <div className="col-lg-12 d-flex justify-content-center align-items-center gap-3 flex-wrap">
+            <Link to="/menu/all" className="btn btn-outline-primary">
+              {t('menu.viewAll')}
+            </Link>
+            <ul className="menu-filters isotope-filters d-flex gap-2 mb-0">
               <li
                 onClick={() => handleFilterClick('*')}
                 data-filter="*"

@@ -1,0 +1,17 @@
+.full-menu-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .full-menu-main {
+    flex: 1;
+    padding-bottom: 60px; /* Tạo khoảng trống cho footer */
+  }
+  
+  /* Fix khoảng trắng dưới footer */
+  @media (max-width: 768px) {
+    .full-menu-main {
+      padding-bottom: 80px;
+    }
+  }

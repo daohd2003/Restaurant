@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import 'bootstrap-icons/font/bootstrap-icons.css'
+import { Link, useLocation } from 'react-router-dom'
 
 const Header = () => {
   const { t, i18n } = useTranslation()
   const [scrolled, setScrolled] = useState(false)
-  const [activeSection, setActiveSection] = useState('hero')
+  const [activeSection, setActiveSection] = useState(null)
+  const [activeMenu, setActiveMenu] = useState(null)
   const [mobileNavActive, setMobileNavActive] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng)
   }
+
+  const location = useLocation()
 
   // Handle scroll effect
   useEffect(() => {
@@ -26,13 +30,15 @@ const Header = () => {
       const scrollPosition = window.scrollY + 200 // Tăng offset để chắc chắn bắt được section hero
       const sections = document.querySelectorAll('section[id]')
 
-      // Nếu scroll lên đầu trang, active hero
-      if (window.scrollY === 0) {
-        setActiveSection('hero')
-        return
-      }
+      // // Nếu scroll lên đầu trang, active hero
+      // if (window.scrollY === 0) {
+      //   setActiveSection('hero')
+      //   return
+      // }
 
-      let currentSection = 'hero' // Mặc định là hero
+      // let currentSection = 'hero' // Mặc định là hero
+
+      let currentSection = null
 
       sections.forEach((section) => {
         const sectionTop = section.offsetTop
@@ -69,8 +75,67 @@ const Header = () => {
     return () => document.removeEventListener('click', handleClickOutside)
   }, [mobileNavActive])
 
+  // Xử lý khi route thay đổi
+  useEffect(() => {
+    if (location.pathname === '/menu/all') {
+      setActiveMenu('menu') // Active menu khi ở trang full menu
+      setActiveSection(null) // Không active section nào
+    } else if (location.hash) {
+      // Xử lý khi có hash (ví dụ: /#about)
+      const sectionId = location.hash.replace('#', '')
+      setActiveSection(sectionId)
+      setActiveMenu(null)
+    } else {
+      setActiveMenu(null)
+      setActiveSection('hero')
+    }
+  }, [location])
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      const sectionId = sessionStorage.getItem('scrollToSection')
+      if (sectionId) {
+        const tryScroll = () => {
+          const section = document.getElementById(sectionId)
+          if (section) {
+            // Gọi scroll sau 100ms để DOM ổn định
+            setTimeout(() => {
+              window.scrollTo({
+                top: section.offsetTop - 100,
+                behavior: 'smooth',
+              })
+              setActiveSection(sectionId)
+              sessionStorage.removeItem('scrollToSection')
+            }, 100)
+          }
+        }
+
+        // Cố gắng scroll sau 1 tick
+        requestAnimationFrame(tryScroll)
+      }
+    }
+  }, [location])
+
+  useEffect(() => {
+    // Khôi phục trạng thái khi tải lại trang
+    const savedMenu = sessionStorage.getItem('activeMenu')
+    if (savedMenu && location.pathname === '/menu/all') {
+      setActiveMenu(savedMenu)
+    }
+  }, [])
+
   const handleMenuClick = (e, sectionId) => {
     e.preventDefault()
+
+    // Nếu đang ở trang khác homepage, chuyển về homepage trước
+    if (location.pathname !== '/') {
+      // Lưu sectionId để scroll sau khi chuyển trang
+      sessionStorage.setItem('scrollToSection', sectionId)
+      window.location.href = `/#${sectionId}`
+      return
+    }
+
+    // Nếu đã ở homepage, thực hiện scroll như bình thường
     const section = document.getElementById(sectionId)
     if (section) {
       window.scrollTo({
@@ -132,13 +197,13 @@ const Header = () => {
       <div className="branding d-flex align-items-center">
         <div className="container position-relative d-flex align-items-center justify-content-between">
           {/* Logo */}
-          <a
-            href="index.html"
+          <Link
+            to="/"
             className="logo d-flex align-items-center me-auto me-xl-0 no-underline"
             onClick={(e) => handleMenuClick(e, 'hero')}
           >
             <h1 className="sitename">{t('header.logo')}</h1>
-          </a>
+          </Link>
 
           {/* Nav Menu */}
           <nav
@@ -153,7 +218,9 @@ const Header = () => {
                   <a
                     href={`#${key}`}
                     className={`no-underline ${
-                      activeSection === key ? 'active' : ''
+                      activeSection === key || activeMenu === key
+                        ? 'active'
+                        : ''
                     }`}
                     onClick={(e) => handleMenuClick(e, key)}
                   >

@@ -1,25 +1,18 @@
 import { useState, useEffect } from 'react'
-import Header from './components/Header'
-import Hero from './components/Hero'
-import About from './components/About'
-import WhyUs from './components/WhyUs'
-import Menu from './components/Menu/Menu.jsx'
-import Specials from './components/Specials'
-import Events from './components/Events'
-import BookTable from './components/BookTable'
-import Testimonials from './components/Testimonials'
-import Gallery from './components/Gallery'
-import Chefs from './components/Chefs'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
+import MainLayout from './MainLayout'
+import HomePage from './components/pages/HomePage'
+import FullMenuPage from './components/Menu/FullMenuPage'
+
 import './assets/css/main.css'
 import './assets/vendor/bootstrap/css/bootstrap.min.css'
 import './assets/vendor/isotope-layout/isotope.pkgd.min.js'
 import './assets/vendor/imagesloaded/imagesloaded.pkgd.min.js'
 import './assets/vendor/php-email-form/validate.js'
 import './assets/vendor/bootstrap/js/bootstrap.bundle.min.js'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -34,7 +27,6 @@ function App() {
       })
     }, 1000)
 
-    // Thêm sự kiện scroll
     const checkScrollTop = () => {
       if (!showScroll && window.pageYOffset > 400) {
         setShowScroll(true)
@@ -62,22 +54,14 @@ function App() {
   }
 
   return (
-    <>
-      <Header />
-      <main className="main">
-        <Hero />
-        <About />
-        <WhyUs />
-        <Menu />
-        <Specials />
-        <Events />
-        <BookTable />
-        <Testimonials />
-        <Gallery />
-        <Chefs />
-        <Contact />
-      </main>
-      <Footer />
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="menu/all" element={<FullMenuPage />} />
+        </Route>
+      </Routes>
+
       <a
         href="#"
         id="scroll-top"
@@ -91,7 +75,7 @@ function App() {
       >
         <i className="bi bi-arrow-up-short"></i>
       </a>
-    </>
+    </Router>
   )
 }
 
