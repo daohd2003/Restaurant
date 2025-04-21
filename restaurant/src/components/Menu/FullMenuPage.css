@@ -101,6 +101,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
+  cursor: pointer;
 }
 
 .full-menu-item {
@@ -113,6 +114,7 @@
 
 .full-menu-item:hover {
   transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .full-menu-item-image {
@@ -182,12 +184,14 @@
 
   .full-menu-item {
     font-size: 14px;
+    transition: all 0.3s ease;
   }
 }
 
 @media (max-width: 480px) {
   .full-menu-items {
     grid-template-columns: 1fr;
+    cursor: pointer;
   }
 
   .filter-group input,
@@ -243,4 +247,255 @@
 .pagination button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* Modal Styles */
+.menu-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 10px;
+  outline: none;
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.menu-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  animation: overlayFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.menu-modal-content {
+  padding: 30px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #777;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #e74c3c;
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header h2 {
+  color: #e67e22;
+  margin-bottom: 15px;
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.modal-body {
+  margin-top: 20px;
+}
+
+.modal-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.modal-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  color: #000000
+}
+
+.detail-label {
+  font-weight: bold;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.detail-value {
+  color: #333;
+  font-size: 1rem;
+}
+
+/* Comments Section */
+.comments-section {
+  margin-top: 30px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.comments-section h3 {
+  color: #e67e22;
+  margin-bottom: 15px;
+}
+
+.comments-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.comment-item {
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #f9f9f9;
+  border-radius: 6px;
+  border-left: 3px solid #e67e22;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.rating {
+  color: #f1c40f;
+}
+
+.comment-text {
+  margin: 0;
+  color: #555;
+  line-height: 1.5;
+}
+
+.no-comments {
+  text-align: center;
+  color: #777;
+  font-style: italic;
+  padding: 20px;
+}
+
+/* Comment Form */
+.comment-form {
+  margin-top: 30px;
+  color: #333;
+}
+
+.comment-form h4 {
+  margin-bottom: 10px;
+  color: #e67e22;
+}
+
+.comment-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+  margin-bottom: 10px;
+}
+
+.submit-comment {
+  background: #e67e22;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submit-comment:hover {
+  background: #d35400;
+}
+
+/* Comment Pagination */
+.comment-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin: 20px 0;
+}
+
+.comment-pagination button {
+  padding: 5px 10px;
+  font-size: 0.8rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .full-menu-container {
+    flex-direction: column;
+  }
+  
+  .menu-filter {
+    flex: 1;
+    margin-bottom: 20px;
+  }
+  
+  .modal-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+.edit-comment-btn {
+  margin-left: 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #007bff;
+  font-size: 0.9rem;
+}
+
+.comment-form select {
+  margin: 0.5rem 0;
+  padding: 0.3rem;
+  font-size: 1rem;
 }

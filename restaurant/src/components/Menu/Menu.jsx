@@ -268,7 +268,7 @@ const Menu = () => {
               {selectedItem.isFeatured && (
                 <div className="popup-section">
                   <span className="featured-badge">
-                    {t('menu.popup.featured')}
+                    {t('menu.popup.featured')} 👨‍🍳
                   </span>
                 </div>
               )}

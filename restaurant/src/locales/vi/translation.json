@@ -337,6 +337,14 @@
       "desserts": "Tráng miệng",
       "drinks": "Đồ uống"
     },
-    "minutes": "phút"
+    "minutes": "phút",
+    "commentsTitle": "Bình luận",
+    "commentPlaceholder": "Viết bình luận ngay đây...",
+    "submitComment": "Gửi",
+    "status": "Trạng thái",
+    "edit": "Sửa",
+    "editCommentTitle": "Chỉnh sửa bình luận",
+    "saveEdit": "Lưu thay đổi",
+    "ratingLabel": "Đánh giá"
   }
 }

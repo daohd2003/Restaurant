@@ -337,6 +337,14 @@
       "desserts": "Desserts",
       "drinks": "Drinks"
     },
-    "minutes": "minutes"
+    "minutes": "minutes",
+    "commentsTitle": "Comments",
+    "commentPlaceholder": "Write your comment here...",
+    "submitComment": "Submit Comment",
+    "status": "status",
+    "edit": "Sửa",
+    "editCommentTitle": "Edit Comment",
+    "saveEdit": "Save Edit",
+    "ratingLabel": "Rating"
   }
 }
