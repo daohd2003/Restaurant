@@ -321,6 +321,10 @@ section[id] {
   cursor: pointer;
 }
 
+.languages {
+  margin-right: -65%;
+}
+
 .languages ul li {
   cursor: pointer;
   padding: 0 8px;
@@ -374,4 +378,14 @@ section[id] {
   line-height: 0;
   transition: color 0.3s ease;
   color: #ffffff;
+}
+
+@media (max-width: 1200px) {
+  .languages {
+    margin-right: -30%;
+  }
+  .languages ul li {
+    padding: 0 10px;
+    font-size: 15px;
+  }
 }

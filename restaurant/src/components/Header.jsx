@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const Header = () => {
   const { t, i18n } = useTranslation()
@@ -10,12 +10,20 @@ const Header = () => {
   const [activeMenu, setActiveMenu] = useState(null)
   const [mobileNavActive, setMobileNavActive] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const navigate = useNavigate()
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng)
   }
 
   const location = useLocation()
+
+  // Kiểm tra trạng thái đăng nhập khi component mount
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    setIsLoggedIn(!!token)
+  }, [])
 
   // Handle scroll effect
   useEffect(() => {
@@ -151,6 +159,12 @@ const Header = () => {
     setActiveDropdown(activeDropdown === dropdownId ? null : dropdownId)
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    setIsLoggedIn(false)
+    navigate('/')
+  }
+
   return (
     <header
       id="header"
@@ -189,6 +203,41 @@ const Header = () => {
                 />
               </li>
             </ul>
+          </div>
+          {/* Auth Buttons */}
+          <div className="auth-buttons d-flex align-items-center ms-3">
+            {isLoggedIn ? (
+              <div className="dropdown">
+                <button
+                  className="btn btn-outline-primary dropdown-toggle"
+                  type="button"
+                  id="userDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i className="bi bi-person-circle me-1"></i>
+                  {t('header.profile')}
+                </button>
+                <ul className="dropdown-menu" aria-labelledby="userDropdown">
+                  <li>
+                    <Link className="dropdown-item" to="/profile">
+                      {t('header.my_profile')}
+                    </Link>
+                  </li>
+                  <li>
+                    <button className="dropdown-item" onClick={handleLogout}>
+                      {t('header.logout')}
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <>
+                <Link to="/login" className="btn btn-outline-primary me-2">
+                  {t('header.login')}
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>

@@ -26,7 +26,12 @@
         "Danh mục 4"
       ]
     },
-    "book_table": "Đặt bàn"
+    "book_table": "Đặt bàn",
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "profile": "Tài khoản",
+    "my_profile": "Hồ sơ của tôi",
+    "logout": "Đăng xuất"
   },
   "hero": {
     "title_part1": "Chào mừng đến với",
@@ -346,5 +351,55 @@
     "editCommentTitle": "Chỉnh sửa bình luận",
     "saveEdit": "Lưu thay đổi",
     "ratingLabel": "Đánh giá"
+  },
+  "login": {
+    "title": "Đăng nhập",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "submit": "Đăng nhập",
+    "no_account": "Chưa có tài khoản? ",
+    "register_here": "Đăng ký ngay"
+  },
+  "register": {
+    "title": "Tạo tài khoản",
+    "full_name": "Họ và tên",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "confirm_password": "Xác nhận mật khẩu",
+    "submit": "Đăng ký",
+    "have_account": "Đã có tài khoản?",
+    "login_here": "Đăng nhập ở đây",
+    "success_message": "Đăng ký thành công! Vui lòng đăng nhập.",
+    "errors": {
+      "fullName_required": "Họ và tên là bắt buộc",
+      "email_required": "Email là bắt buộc",
+      "email_invalid": "Vui lòng nhập một email hợp lệ",
+      "password_required": "Mật khẩu là bắt buộc",
+      "password_min_length": "Mật khẩu phải có ít nhất 6 ký tự",
+      "passwords_not_match": "Mật khẩu và xác nhận mật khẩu không khớp",
+      "email_exists": "Email đã tồn tại",
+      "general_error": "Đăng ký không thành công. Vui lòng thử lại."
+    }
+  },
+  "loading": "Đang xử lý...",
+  "profile": {
+    "title": "Hồ sơ của tôi",
+    "edit_button": "Chỉnh sửa hồ sơ",
+    "save_button": "Lưu thay đổi",
+    "cancel_button": "Hủy",
+    "full_name": "Họ và tên",
+    "email": "Email",
+    "phone": "Số điện thoại",
+    "address": "Địa chỉ",
+    "avatar": "Ảnh đại diện",
+    "avatar_alt": "Ảnh đại diện hồ sơ",
+    "update_success": "Cập nhật hồ sơ thành công",
+    "update_error": "Cập nhật hồ sơ không thành công",
+    "fetch_error": "Không thể tải hồ sơ",
+    "errors": {
+      "fullName_required": "Họ và tên là bắt buộc",
+      "email_required": "Email là bắt buộc"
+    },
+    "back_to_home": "Về trang chủ"
   }
 }

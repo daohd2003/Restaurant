@@ -26,7 +26,12 @@
         "Dropdown 4"
       ]
     },
-    "book_table": "Book a Table"
+    "book_table": "Book a Table",
+    "login": "Login",
+    "register": "Register",
+    "profile": "Profile",
+    "my_profile": "My Profile",
+    "logout": "Logout"
   },
   "hero": {
     "title_part1": "Welcome to",
@@ -332,7 +337,7 @@
     "categories": {
       "all": "All",
       "starters": "Starters",
-      "main Courses": "Main Courses",
+      "maincourses": "Main Courses",
       "salads": "Salads",
       "desserts": "Desserts",
       "drinks": "Drinks"
@@ -346,5 +351,55 @@
     "editCommentTitle": "Edit Comment",
     "saveEdit": "Save Edit",
     "ratingLabel": "Rating"
+  },
+  "login": {
+    "title": "Login",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Login",
+    "no_account": "Don't have an account? ",
+    "register_here": "Register now"
+  },
+  "register": {
+    "title": "Create Account",
+    "full_name": "Full Name",
+    "email": "Email",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "submit": "Register",
+    "have_account": "Already have an account?",
+    "login_here": "Login here",
+    "success_message": "Registration successful! Please login.",
+    "errors": {
+      "fullName_required": "Full name is required",
+      "email_required": "Email is required",
+      "email_invalid": "Please enter a valid email",
+      "password_required": "Password is required",
+      "password_min_length": "Password must be at least 6 characters",
+      "passwords_not_match": "Passwords do not match",
+      "email_exists": "Email already exists",
+      "general_error": "Registration failed. Please try again."
+    }
+  },
+  "loading": "Processing...",
+  "profile": {
+    "title": "My Profile",
+    "edit_button": "Edit Profile",
+    "save_button": "Save Changes",
+    "cancel_button": "Cancel",
+    "full_name": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "avatar": "Profile Picture",
+    "avatar_alt": "Profile Avatar",
+    "update_success": "Profile updated successfully",
+    "update_error": "Failed to update profile",
+    "fetch_error": "Failed to load profile",
+    "errors": {
+      "fullName_required": "Full name is required",
+      "email_required": "Email is required"
+    },
+    "back_to_home": "Back to Home"
   }
 }

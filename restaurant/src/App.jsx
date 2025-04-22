@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Profiler } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
@@ -6,6 +6,8 @@ import 'aos/dist/aos.css'
 import MainLayout from './MainLayout'
 import HomePage from './components/pages/HomePage'
 import FullMenuPage from './components/Menu/FullMenuPage'
+import LoginPage from './components/login/LoginPage';
+import ProfilePage from './components/profile/ProfilePage';
 
 import './assets/css/main.css'
 import './assets/vendor/bootstrap/css/bootstrap.min.css'
@@ -60,6 +62,8 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="menu/all" element={<FullMenuPage />} />
         </Route>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
 
       <a
