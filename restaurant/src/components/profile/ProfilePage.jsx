@@ -122,30 +122,27 @@ const ProfilePage = () => {
 
       setIsLoading(true)
       try {
-        // Tạo object dữ liệu đúng chuẩn với UserDto
-        const updatedUser = {
-          id: profile.id, // Lấy id từ profile hiện tại
-          fullName: editableProfile.fullName,
-          email: profile.email, // Giữ nguyên email từ profile gốc (không dùng editable email)
-          phone: editableProfile.phone || '',
-          address: editableProfile.address || '',
-          avatarUrl: editableProfile.avatarUrl, // Giữ nguyên avatarUrl nếu không thay đổi
-        }
+        const formData = new FormData()
+        formData.append('Id', profile.id)
+        formData.append('FullName', editableProfile.fullName)
+        formData.append('Email', profile.email) // giữ nguyên email gốc
+        formData.append('Phone', editableProfile.phone || '')
+        formData.append('Address', editableProfile.address || '')
+        formData.append('AvatarUrl', editableProfile.avatarUrl || '')
 
-        // Gửi dữ liệu profile dưới dạng JSON
-        await updateProfile(updatedUser)
-
-        // Nếu có avatar mới, upload riêng
         if (editableProfile.avatar) {
-          const formData = new FormData()
-          formData.append('avatar', editableProfile.avatar)
-          const avatarResponse = await updateProfile(formData)
-          updatedUser.avatarUrl =
-            avatarResponse.data?.avatarUrl || editableProfile.avatarUrl
+          formData.append('AvatarFile', editableProfile.avatar)
         }
 
-        // Cập nhật state với dữ liệu mới
-        setProfile(updatedUser)
+        await updateProfile(formData)
+
+        setProfile((prev) => ({
+          ...prev,
+          ...editableProfile,
+          avatarUrl: editableProfile.avatar
+            ? editableProfile.avatarUrl
+            : prev.avatarUrl,
+        }))
         setIsEditing(false)
         setSuccessMessage(t('profile.update_success'))
         setTimeout(() => setSuccessMessage(''), 3000)
@@ -354,24 +351,46 @@ const FormField = ({
   error,
   type = 'text',
   required = false,
+  readOnly = false,
   ...props
-}) => (
-  <div className={`form-field ${error ? 'has-error' : ''}`}>
-    <label htmlFor={name}>
-      {label}
-      {required && <span className="required">*</span>}
-    </label>
-    <input
-      id={name}
-      type={type}
-      name={name}
-      value={value}
-      onChange={onChange}
-      {...props}
-    />
-    {error && <span className="error-message">{error}</span>}
-  </div>
-)
+}) => {
+  const [isFocused, setIsFocused] = useState(false)
+
+  const handleKeyDown = (e) => {
+    if (e.ctrlKey && e.key === 'a') {
+      e.preventDefault()
+      e.target.select()
+    }
+  }
+
+  return (
+    <div className={`form-field ${error ? 'has-error' : ''}`}>
+      <label htmlFor={name}>
+        {label}
+        {required && <span className="required">*</span>}
+      </label>
+      <div className="input-container">
+        <input
+          id={name}
+          type={type}
+          name={name}
+          value={value}
+          onChange={onChange}
+          onFocus={(e) => {
+            e.target.select()
+            setIsFocused(true)
+          }}
+          onBlur={() => setIsFocused(false)}
+          onKeyDown={handleKeyDown}
+          readOnly={readOnly}
+          className={readOnly ? 'read-only-input' : ''}
+          {...props}
+        />
+      </div>
+      {error && <span className="error-message">{error}</span>}
+    </div>
+  )
+}
 
 const DetailItem = ({ icon, label, value }) => (
   <div className="detail-item">

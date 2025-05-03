@@ -21,7 +21,7 @@ const Header = () => {
 
   // Kiểm tra trạng thái đăng nhập khi component mount
   useEffect(() => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('accessToken')
     setIsLoggedIn(!!token)
   }, [])
 
@@ -160,7 +160,7 @@ const Header = () => {
   }
 
   const handleLogout = () => {
-    localStorage.removeItem('token')
+    localStorage.removeItem('accessToken')
     setIsLoggedIn(false)
     navigate('/')
   }

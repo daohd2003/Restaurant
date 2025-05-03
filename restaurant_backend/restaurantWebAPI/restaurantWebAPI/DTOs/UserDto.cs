@@ -8,6 +8,11 @@
         public string? Phone { get; set; }
         public string? Address { get; set; }
         public string? AvatarUrl { get; set; }
+        public string Role { get; set; } = "Customer";
+
+        [Newtonsoft.Json.JsonIgnore] 
+        [System.Text.Json.Serialization.JsonIgnore] 
+        public IFormFile? AvatarFile { get; set; }
     }
 
 }

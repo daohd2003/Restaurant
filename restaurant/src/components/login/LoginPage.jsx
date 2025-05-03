@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import './LoginPage.css';
-import { loginAPI, registerAPI } from '../../api/auth';
+import { authAPI } from '../../api/auth';
 
 const LoginPage = () => {
   const { t } = useTranslation();
@@ -11,9 +11,10 @@ const LoginPage = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-    confirmPassword: '', // Thêm confirmPassword
+    confirmPassword: '',
     fullName: '',
   });
+  const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -32,6 +33,7 @@ const LoginPage = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setError(''); // Reset error khi người dùng nhập liệu
   };
 
   const handleSubmit = async (e) => {
@@ -39,28 +41,44 @@ const LoginPage = () => {
 
     // Kiểm tra confirm password khi đăng ký
     if (!isLogin && formData.password !== formData.confirmPassword) {
-      alert(t('register.errors.passwords_not_match'));
+      setError(t('register.errors.passwords_not_match'));
       return;
     }
 
     try {
       if (isLogin) {
-        const response = await loginAPI({
+        const response = await authAPI.login({
           email: formData.email,
           password: formData.password,
         });
-        localStorage.setItem('token', response.token);
-        navigate('/');
+
+        if (response.success) {
+          // Lưu token và user data
+          localStorage.setItem('accessToken', response.data.accessToken);
+          localStorage.setItem('refreshToken', response.data.refreshToken);
+          navigate('/');
+        } else {
+          setError(response.error);
+        }
       } else {
-        await registerAPI({
+        const response = await authAPI.register({
           fullName: formData.fullName,
           email: formData.email,
           password: formData.password,
         });
-        setIsLogin(true);
+
+        if (response.success) {
+          // Tự động đăng nhập sau khi đăng ký
+          localStorage.setItem('accessToken', response.data.accessToken);
+          localStorage.setItem('refreshToken', response.data.refreshToken);
+          navigate('/');
+        } else {
+          setError(response.error);
+        }
       }
     } catch (error) {
-      alert('Có lỗi xảy ra: ' + error.response?.data?.message || error.message);
+      setError(t('common.errors.server_error'));
+      console.error('Auth error:', error);
     }
   };
 
@@ -68,6 +86,8 @@ const LoginPage = () => {
     <div className="login-container">
       <div className={`auth-form ${isLogin ? 'login' : 'register'}`}>
         <h2>{isLogin ? t('login.title') : t('register.title')}</h2>
+        
+        {error && <div className="error-message">{error}</div>}
 
         <form onSubmit={handleSubmit}>
           {!isLogin && (
@@ -82,6 +102,7 @@ const LoginPage = () => {
                 onFocus={handleFocus(fullNameRef)}
                 className="highlightable-input"
                 required
+                minLength={2}
               />
             </div>
           )}
@@ -112,13 +133,13 @@ const LoginPage = () => {
                 onFocus={handleFocus(passwordRef)}
                 className="highlightable-input"
                 required
-                minLength="6"
+                minLength={6}
               />
               <button
                 type="button"
                 className="toggle-password"
                 onClick={() => setShowPassword(!showPassword)}
-                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                aria-label={showPassword ? t('common.hide_password') : t('common.show_password')}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
@@ -138,13 +159,13 @@ const LoginPage = () => {
                   onFocus={handleFocus(confirmPasswordRef)}
                   className="highlightable-input"
                   required
-                  minLength="6"
+                  minLength={6}
                 />
                 <button
                   type="button"
                   className="toggle-password"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
+                  aria-label={showConfirmPassword ? t('common.hide_password') : t('common.show_password')}
                 >
                   {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
@@ -161,14 +182,28 @@ const LoginPage = () => {
           {isLogin ? (
             <>
               <span>{t('login.no_account')}</span>
-              <button onClick={() => setIsLogin(false)} className="switch-button">
+              <button 
+                type="button"
+                onClick={() => {
+                  setIsLogin(false);
+                  setError('');
+                }} 
+                className="switch-button"
+              >
                 {t('login.register_here')}
               </button>
             </>
           ) : (
             <>
               <span>{t('register.have_account')}</span>
-              <button onClick={() => setIsLogin(true)} className="switch-button">
+              <button 
+                type="button"
+                onClick={() => {
+                  setIsLogin(true);
+                  setError('');
+                }} 
+                className="switch-button"
+              >
                 {t('register.login_here')}
               </button>
             </>

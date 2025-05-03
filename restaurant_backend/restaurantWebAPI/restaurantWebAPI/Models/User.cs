@@ -10,5 +10,7 @@
         public string? Address { get; set; }
         public string Role { get; set; } = "Customer";
         public string? AvatarUrl { get; set; }
+
+        public virtual ICollection<UserRefreshToken> RefreshTokens { get; set; }
     }
 }

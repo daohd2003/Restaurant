@@ -203,10 +203,12 @@
 
 .form-field input {
   padding: 0.75rem 1rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #000000;
   border-radius: 8px;
   font-size: 1rem;
+  width: 100%;
   transition: all 0.2s;
+  caret-color: #ffffff;
 }
 
 .form-field input:focus {
@@ -370,4 +372,351 @@
 
 .btn-back:hover {
   background-color: #bbb;
+}
+
+/* Input readOnly */
+.read-only-input {
+  cursor: text;
+  background-color: #f8f9fa;
+  user-select: all; /* Hỗ trợ bôi đen toàn bộ */
+}
+
+.read-only-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Hiệu ứng khi bôi đen */
+input::selection {
+  background: #007bff;
+  color: white;
+}
+
+/* FormField styles */
+.form-field {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.input-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* ================ */
+/*  BASE STYLES      */
+/* ================ */
+.profile-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* ================ */
+/*  LOADING STATE    */
+/* ================ */
+.profile-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  color: #4a5568;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: #3a86ff;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ================ */
+/*  PROFILE CARD     */
+/* ================ */
+.profile-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  position: relative;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profile-header h1 {
+  font-size: 2rem;
+  color: #2d3748;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* ================ */
+/*  AVATAR STYLES    */
+/* ================ */
+.avatar-upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.avatar-placeholder {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.avatar-sm { width: 40px; height: 40px; font-size: 1rem; }
+.avatar-md { width: 60px; height: 60px; font-size: 1.5rem; }
+.avatar-lg { width: 80px; height: 80px; font-size: 2rem; }
+.avatar-xl { width: 120px; height: 120px; font-size: 3rem; }
+
+.avatar-upload-btn {
+  background: #f7fafc;
+  color: #4a5568;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.avatar-upload-btn:hover {
+  background: #edf2f7;
+  border-color: #cbd5e0;
+}
+
+.hidden-input {
+  display: none;
+}
+
+/* ================ */
+/*  FORM STYLES      */
+/* ================ */
+.profile-form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.form-field label {
+  font-size: 0.875rem;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.form-field .required {
+  color: #e53e3e;
+  margin-left: 0.25rem;
+}
+
+.input-container {
+  position: relative;
+}
+
+/* Custom Caret Styling */
+.input-caret {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #3a86ff;
+  animation: blink 1s step-end infinite;
+  pointer-events: none;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Readonly and Error States */
+.read-only-input {
+  background-color: #f8f9fa;
+  cursor: text;
+  user-select: all;
+}
+
+.read-only-input:focus {
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+.has-error input {
+  border-color: #fc8181;
+}
+
+.error-message {
+  color: #e53e3e;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+/* ================ */
+/*  BUTTONS & ACTIONS */
+/* ================ */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.profile-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.btn-primary {
+  background: #3a86ff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #2563eb;
+}
+
+.btn-primary:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #f7fafc;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+}
+
+.btn-secondary:hover {
+  background: #edf2f7;
+  border-color: #cbd5e0;
+}
+
+.btn-edit {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-back {
+  background-color: #f7fafc;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+}
+
+.btn-loader {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+/* ================ */
+/*  ALERT MESSAGES   */
+/* ================ */
+.alert {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.alert-error {
+  background: #fff5f5;
+  color: #e53e3e;
+  border: 1px solid #fed7d7;
+}
+
+.alert-success {
+  background: #f0fff4;
+  color: #38a169;
+  border: 1px solid #c6f6d5;
+}
+
+/* ================ */
+/*  RESPONSIVE       */
+/* ================ */
+@media (max-width: 768px) {
+  .profile-card {
+    padding: 1.5rem;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-actions,
+  .profile-footer {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+}
+
+/* ================ */
+/*  TEXT SELECTION   */
+/* ================ */
+input::selection {
+  background: #3a86ff;
+  color: white;
 }

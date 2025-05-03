@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using restaurantWebAPI.Data;
 
@@ -11,9 +12,11 @@ using restaurantWebAPI.Data;
 namespace restaurantWebAPI.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    partial class RestaurantDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250503054448_AddUserRefreshTokensTable_V2")]
+    partial class AddUserRefreshTokensTable_V2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -169,8 +172,8 @@ namespace restaurantWebAPI.Migrations
 
                     b.Property<string>("DeviceId")
                         .IsRequired()
-                        .IsUnicode(true)
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime>("ExpiryDate")
                         .HasColumnType("datetime2");

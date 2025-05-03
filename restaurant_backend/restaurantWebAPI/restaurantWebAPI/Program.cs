@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using restaurantWebAPI.Configuration;
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
 
 namespace restaurantWebAPI
 {
@@ -67,11 +70,24 @@ namespace restaurantWebAPI
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<IMenuService, MenuService>();
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IAzureBlobStorageService, AzureBlobStorageService>();
             builder.Services.AddScoped<JwtService>();
 
             builder.Services.AddAutoMapper(typeof(MappingProfile));
             builder.Services.AddSignalR();
 
+            // Cấu hình Azure Storage
+            builder.Services.Configure<AzureStorageSettings>(builder.Configuration.GetSection("AzureStorage"));
+
+            // Đăng ký Cloudinary
+            var cloudinaryConfig = builder.Configuration.GetSection("Cloudinary");
+            var account = new Account(
+                cloudinaryConfig["CloudName"],
+                cloudinaryConfig["ApiKey"],
+                cloudinaryConfig["ApiSecret"]
+            );
+            var cloudinary = new Cloudinary(account);
+            builder.Services.AddSingleton(cloudinary);
 
             builder.Services.AddSwaggerGen(c =>
             {
@@ -110,8 +126,12 @@ namespace restaurantWebAPI
                 });
             });
 
+
+            builder.Services.AddHttpContextAccessor();
+
             var app = builder.Build();
 
+            app.UseCors("AllowReactApp");
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -129,8 +149,7 @@ namespace restaurantWebAPI
             }
             );*/
 
-            app.UseCors("AllowReactApp");
-
+            
             app.UseHttpsRedirection();
 
             app.MapHub<MenuCategoryHub>("/menuCategoryHub");

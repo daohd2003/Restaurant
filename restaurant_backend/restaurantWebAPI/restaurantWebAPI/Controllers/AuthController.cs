@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity.Data;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using restaurantWebAPI.DTOs;
 using restaurantWebAPI.Services;
+using System.Security.Claims;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -61,7 +64,7 @@ namespace restaurantWebAPI.Controllers
         {
             try
             {
-                var token = await _userService.LoginAsync(dto);
+                var token = await _userService.LoginWithRefreshTokenAsync(dto);
                 return Ok(new { token });
             }
             catch (UnauthorizedAccessException ex)
@@ -75,16 +78,49 @@ namespace restaurantWebAPI.Controllers
         }
 
 
-        // PUT api/<AuthController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPost("refresh-token")]
+        public async Task<IActionResult> RefreshToken(RefreshTokenRequest dto)
         {
+            try
+            {
+                var result = await _userService.RefreshTokenPairAsync(dto);
+                return Ok(result);
+            }
+            catch (SecurityTokenException ex)
+            {
+                return Unauthorized(new ProblemDetails
+                {
+                    Title = "Invalid Token",
+                    Detail = ex.Message
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ProblemDetails
+                {
+                    Title = "Token Refresh Failed",
+                    Detail = "An error occurred while refreshing your token"
+                });
+            }
         }
 
-        // DELETE api/<AuthController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
         {
+            try
+            {
+                var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                await _userService.RevokeTokensAsync(userId);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ProblemDetails
+                {
+                    Title = "Logout Failed",
+                    Detail = "An error occurred while processing your logout"
+                });
+            }
         }
     }
 }
