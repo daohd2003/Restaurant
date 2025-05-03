@@ -27,6 +27,7 @@ _ReSharper*/
 
 # ASP.NET Core secrets
 secrets.json
+appsettings.json
 
 # NuGet packages
 *.nupkg
